@@ -1,0 +1,96 @@
+    /* Add some style to the page */
+body {
+        background-color: lightblue;
+        font-family: Arial, sans-serif;
+}
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: radial-gradient (circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient (circle farthest-corner at 0 140%,
+   #fec564, transparent 50%), radial-gradient (ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient (ellipse farthest-corner at 20% -50%,
+    #5258cf, transparent 50%), radial-gradient (ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient (ellipse farthest-corner at 60% -20%, 
+    #893dc2, transparent 50%), radial-gradient (ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient (#6559ca, #bc318f 30%, #e33f5f 50%, 
+    #f77638 70%, #fec66d 100%);
+  color: black;
+}
+
+
+input[type=text] {
+  background-image: ('Picture5.svg'); /* use the relative path of your icon file */
+  background-size: 20px; /* adjust the size of the icon */
+  background-position: 10px center; /* adjust the position of the icon */
+  background-repeat: no-repeat; /* prevent the icon from repeating */
+  padding-left: 40px; /* add some space for the icon */
+}
+
+
+    nav {
+      
+        display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin: 10px;
+    }
+    
+
+    nav a:hover {
+      color: blue;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 10px;
+      margin: 20px;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input, form select {
+      padding: 5px;
+    }
+
+    form button {
+      grid-column: 2 / 3;
+      padding: 10px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: darkblue;
+    }

@@ -1,0 +1,62 @@
+    /* Add some style to the page */
+body {
+        background-color: lightblue;
+        font-family: Arial, sans-serif;
+}
+
+input[type=text] {
+  background-image: ('Picture5.png'); /* use the relative path of your icon file */
+  background-size: 20px; /* adjust the size of the icon */
+  background-position: 10px center; /* adjust the position of the icon */
+  background-repeat: no-repeat; /* prevent the icon from repeating */
+  padding-left: 40px; /* add some space for the icon */
+}
+
+
+    nav {
+      
+        display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin: 10px;
+    }
+    
+
+    nav a:hover {
+      color: blue;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 10px;
+      margin: 20px;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input, form select {
+      padding: 5px;
+    }
+
+    form button {
+      grid-column: 2 / 3;
+      padding: 10px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: darkblue;
+    }
