@@ -64,7 +64,7 @@ input[type=text] {
     
 
     nav a:hover {
-      color: blue;
+      color: lightgray;
     }
 
     form {
