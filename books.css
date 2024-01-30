@@ -1,9 +1,7 @@
-    /* Add some style to the page */
 body {
-        background-color: lightblue;
+        background-color: #d3d3d3;
         font-family: Arial, sans-serif;
 }
-
 
 .fa {
   padding: 20px;
@@ -64,7 +62,7 @@ input[type=text] {
     
 
     nav a:hover {
-      color: blue;
+      color: d3d3d3;
     }
 
     form {
@@ -85,14 +83,14 @@ input[type=text] {
     form button {
       grid-column: 2 / 3;
       padding: 10px;
-      background-color: blue;
-      color: white;
+      background-color: d3d3d3;
+      color: black;
       border: none;
       cursor: pointer;
     }
 
     form button:hover {
-      background-color: darkblue;
+      background-color: d3d3d3;
     }
 
     #tagsContainer {
