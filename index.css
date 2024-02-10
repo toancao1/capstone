@@ -1,77 +1,71 @@
 body {
-        background-color: #d3d3d3;
-        font-family: Arial, sans-serif;
+  background-color: #d3d3d3;
+  font-family: Arial, sans-serif;
 }
 
-input[type=text] {
-  background-image: ('Picture5.png'); /* use the relative path of your icon file */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+}
+
+nav a:hover {
+  color: blue;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
+  margin: 20px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input[type=text] {
+  background-image: url('Picture5.png'); /* use the relative path of your icon file */
   background-size: 20px; /* adjust the size of the icon */
   background-position: 10px center; /* adjust the position of the icon */
   background-repeat: no-repeat; /* prevent the icon from repeating */
   padding-left: 40px; /* add some space for the icon */
+  padding: 5px;
 }
 
+form button {
+  grid-column: 2 / 3;
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
-    nav {
-      
-        display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      padding: 10px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: black;
-      margin: 10px;
-    }
-    
-
-    nav a:hover {
-      color: blue;
-    }
-
-    form {
-      display: grid;
-      grid-template-columns: 1fr 3fr;
-      grid-gap: 10px;
-      margin: 20px;
-    }
-
-    form label {
-      font-weight: bold;
-    }
-
-    form input, form select {
-      padding: 5px;
-    }
-
-    form button {
-      grid-column: 2 / 3;
-      padding: 10px;
-      background-color: blue;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: darkblue;
-    }
+form button:hover {
+  background-color: darkblue;
+}
 
 /* Facebook */
 .fa-facebook {
   background: #3B5998;
   color: white;
 }
-  
+
 /* Twitter */
 .fa-twitter {
   background-color: #00ACEE;
   color: white;
 }
-  
+
 /* Instagram */
 .fa-instagram {
   display: inline-block;
@@ -81,4 +75,64 @@ input[type=text] {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
   background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
-  
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  overflow-y: auto;
+  max-height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.icon-bar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #333;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
+.icon-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}

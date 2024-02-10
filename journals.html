@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="journals.css">
+  <script src="index.js"></script>
+  <h1>University Catalogue (Journals)</h1>
+  <title>Catalogue</title>
+</head>
+
+<body>
+  <h1>Journals Page</h1>
+  <div class="navbar">
+    <nav>
+      <a href="#" onclick="redirectTo('index.html')">Home</a>
+      <a href="#" onclick="redirectTo('about.html')">About</a>
+      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
+      <a href="#" onclick="redirectTo('login.html')">Login</a>
+      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown()">Select catalog</span>
+        <div class="dropdown-content">
+          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
+          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
+          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
+          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
+          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+        </div>
+      </div>
+      <a href="index.html">
+        <img src="Images/Picture5.svg" alt="logo">
+      </a>
+    </nav>
+  </div>
+
+
+
+  <form>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title">
+    <label for="creator">Creators:</label>
+    <input type="text" id="creator" name="creator">
+    <label for="identifier">Identifier: </label>
+    <input type="text" id="identifier (ISSN)" name="identifier">
+    <label for="DOI">DOI:</label>
+    <input type="text" id="DOI" name="DOI">
+    <label for="vol_num">Volume number:</label>
+    <input type="number" id="vol_num" name="vol_num" placeholder="positive number">
+    <label for="issue_num">Issue number:</label>
+    <input type="number" id="vol_num" name="vol_num" placeholder="positive number">
+    <label for="">Page range:</label>
+    <input type="text" id="page_range" name="page_range">
+    <label for="type">Type:</label>
+    <input type="type" id="type" name="type">
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description">
+    <label for="pub_date">Publication Date:</label>
+    <input type="date" id=pub_date name="publication date">
+    <label for="keywords">Keywords:</label>
+    <input type="text" id="keywords" name="keywords">
+    <label for="summary">Summary:</label>
+    <input type="text" id="summary" name="summary">
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+
+</html>

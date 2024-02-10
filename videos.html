@@ -4,14 +4,15 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="books.css">
+  <link rel="stylesheet" href="videos.css">
   <script src="index.js"></script>
-  <title>University Catalogue</title>
+  <h1>University Catalogue (Videos)</h1>
+  <title>Catalogue</title>
 </head>
 
+
 <body>
-  <h1>Books Page</h1>
-  <div class="navbar">
+  <<div class="navbar">
     <nav>
       <a href="#" onclick="redirectTo('index.html')">Home</a>
       <a href="#" onclick="redirectTo('about.html')">About</a>
@@ -19,7 +20,7 @@
       <a href="#" onclick="redirectTo('login.html')">Login</a>
       <a href="#" onclick="redirectTo('registration.html')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
+        <span class="dropbtn" onclick="toggleDropdown()">Search catalog</span>
         <div class="dropdown-content">
           <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
           <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
@@ -34,45 +35,46 @@
     </nav>
   </div>
 
-<form>
+
+  <form>
     <label for="title">Title:</label>
     <input type="text" id="title" name="title">
-    <label for="creator">Creator(s):</label>
-    <input type="text" id="creator" name="creator">
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date">
-    <label for="keywords">Keywords:</label>
-    <input type="text" id="keywords" name="keywords">
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="description">
-    <label for="type">Type:</label>
-    <input type="text" id="type" name="type">
-    <label for="contributor">Contributor(s):</label>
-    <input type="text" id="contributor" name="contributor">
-    <label for="source">Source:</label>
-    <input type="text" id="source" name="source">
-    <label for="language">Language:</label>
-    <select id="language" name="language">
-      <option value="Select">Select</option>
-        <option value="English">English</option>
-        <option value="French">French</option>
-        <option value="Other">Other</option>
-    </select>
+    <label for="directors">Directors:</label>
+    <input type="text" id="directors" name="directors">
+    <label for="products">Producers:</label>
+    <input type="text" id="producers" name="producers">
+    <label for="actors">Actors:</label>
+    <input type="text" id="actors" name="actors">
+    <label for="release_year">Release Year:</label>
+    <input type="text" id="release_year" name="release_year">
     <label for="identifier">Identifier:</label>
     <input type="text" id="identifier" name="identifier">
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject">
-    <label for="format">Format:</label>
-    <input type="text" id="format" name="format">
-    <label for="publisher">Publisher:</label>
-    <input type="text" id="publisher" name="publisher">
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description">
+    <label for="language">Language:</label>
+    <select id="language" name="language">
+      <option value="English">English</option>
+      <option value="French">French</option>
+      <option value="Other">Other</option>
+    </select>
+    <label for="creator">Contributor</label>
+    <input type="text" id="contributor" name="contributor">
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre">
     <label for="rights">Rights:</label>
     <input type="text" id="rights" name="rights">
+    <label for="rights">Type:</label>
+    <input type="text" id="type" name="type">
+    <label for="format">Format:</label>
+    <input type="text" id="format" name="format">
+    <label for="keywords">Keywords:</label>
+    <input type="text" id="keywords" name="keywords">
+    <label for="summary">Summary:</label>
+    <input type="text" id="summary" name="summary">
+
     <button type="submit">Submit</button>
   </form>
-<footer>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </body>
+
 </html>

@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <h1>About Us</h1>
-    <title>About Page</title>
-    <link rel="stylesheet" href="about.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="about.css">
+  <script src="index.js"></script>
+  <title>University Catalogue</title>
 </head>
+
 <body>
+  <h1>About Page</h1>
+  <div class="navbar">
     <nav>
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="about.html">About</a>
-        <a href="help.html">Help</a>
-        <input type="text" placeholder="Search">
+      <a href="#" onclick="redirectTo('index.html')">Home</a>
+      <a href="#" onclick="redirectTo('about.html')">About</a>
+      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
+      <a href="#" onclick="redirectTo('login.html')">Login</a>
+      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
+        <div class="dropdown-content">
+          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
+          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
+          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
+          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
+          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+        </div>
+      </div>
+      <a href="index.html">
         <img src="Images/Picture5.svg" alt="logo">
-      </nav> 
+      </a>
+    </nav>
+  </div>
+
+  <p>Welcome to our university library, the Ottawa Academic University library website LMS.</p>
+
 </body>
-  <p>This is our university library website lms for metadata</p>
+
 </html>

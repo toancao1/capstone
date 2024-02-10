@@ -1,19 +1,44 @@
+<!--https://www.w3schools.com/howto/howto_css_social_media_buttons.asp-->
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>Contact Page</h1>
     <title>Contact Page</title>
     <link rel="stylesheet" href="contact.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="index.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="about.html">About</a>
-        <a href="help.html">Help</a>
-        <input type="text" placeholder="Search">
-        <img src="C:\Users\caoto\Dropbox\PC\Downloads\Picture5.svg" alt="logo">
-      </nav> 
+    <h1>Contact Page</h1>
+    <div class="navbar">
+        <nav>
+            <a href="#" onclick="redirectTo('index.html')">Home</a>
+            <a href="#" onclick="redirectTo('about.html')">About</a>
+            <a href="#" onclick="redirectTo('contact.html')">Contact</a>
+            <a href="#" onclick="redirectTo('login.html')">Login</a>
+            <a href="#" onclick="redirectTo('registration.html')">Register</a>
+            <div class="dropdown">
+                <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
+                <div class="dropdown-content">
+                    <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
+                    <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
+                    <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
+                    <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
+                    <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+                </div>
+            </div>
+            <a href="index.html">
+                <img src="Images/Picture5.svg" alt="logo">
+            </a>
+        </nav>
+    </div>
+
+    <p>Find items through our LMS. Contact us if you need help searching for items.</p>
+
+    <footer>    
+        <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+        <a href="https://www.x.com" class="fa fa-twitter"></a>
+        <a href="https://www.instagram.com" class="fa fa-instagram"></a>
+    </footer>
 </body>
-  <p>Welcome to our university library website LMS. Contact us for any help finding items. </p>
 </html>
