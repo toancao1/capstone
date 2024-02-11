@@ -7,9 +7,11 @@
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
-</head>
-<body>
-    <h1>Contact Page</h1>
+    <h1>Contact Us</h1>
+    <!--source: https://www.w3schools.com/howto/howto_css_contact_form.asp-->
+    <title>Contact Page</title>
+  </head>
+  <body>
     <div class="navbar">
         <nav>
             <a href="#" onclick="redirectTo('index.html')">Home</a>
@@ -33,12 +35,28 @@
         </nav>
     </div>
 
-    <p>Find items through our LMS. Contact us if you need help searching for items.</p>
+    <div class="container">
+        <form action="contact.php">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="First Name">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lastname" placeholder="Last Name">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="email">
+          <label for="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write your message here..." style="height:300px"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+</body>
+<p>Find items through our LMS. Contact us if you need help searching for items.</p>
 
-    <footer>    
+    <footer div class="icon-bar">    
         <a href="https://www.facebook.com" class="fa fa-facebook"></a>
         <a href="https://www.x.com" class="fa fa-twitter"></a>
         <a href="https://www.instagram.com" class="fa fa-instagram"></a>
+    </div>
     </footer>
 </body>
 </html>
+
