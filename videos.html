@@ -8,25 +8,23 @@
   <script src="index.js"></script>
   <title>Catalogue</title>
 </head>
-
-
 <body>
   <h1>Videos Page</h1>
-  <div class="navbar">
+  <div class="nav">
     <nav>
-      <a href="#">Home</a>
+      <a href="#" onclick="redirectTo('index.html')">Home</a>
       <a href="#" onclick="redirectTo('about.html')">About</a>
       <a href="#" onclick="redirectTo('contact.html')">Contact</a>
       <a href="#" onclick="redirectTo('login.html')">Login</a>
       <a href="#" onclick="redirectTo('registration.html')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Search catalog</span>
+        <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
         <div class="dropdown-content">
-          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
-          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
-          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+          <a href="#" onclick="redirectTo('books.html', event)">Books</a>
+          <a href="#" onclick="redirectTo('journals.html', event)">Journals</a>
+          <a href="#" onclick="redirectTo('images.html', event)">Images</a>
+          <a href="#" onclick="redirectTo('videos.html', event)">Videos</a>
+          <a href="#" onclick="redirectTo('dissertations.html', event)">Dissertations</a>
         </div>
       </div>
       <a href="index.html">
@@ -34,7 +32,6 @@
       </a>
     </nav>
   </div>
-
 
   <form>
     <label for="title">Title:</label>
@@ -58,7 +55,7 @@
       <option value="French">French</option>
       <option value="Other">Other</option>
     </select>
-    <label for="creator">Contributor</label>
+    <label for="creator">Contributors</label>
     <input type="text" id="contributor" name="contributor">
     <label for="genre">Genre:</label>
     <input type="text" id="genre" name="genre">
@@ -72,7 +69,6 @@
     <input type="text" id="keywords" name="keywords">
     <label for="summary">Summary:</label>
     <input type="text" id="summary" name="summary">
-
     <button type="submit">Submit</button>
   </form>
 

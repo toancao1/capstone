@@ -10,37 +10,54 @@
 </head>
 
 <body>
-  <h1>Home Page of Ottawa Academic University Library </h1>
-  <div class="navbar">
+  <h1>Home Page of Ottawa Academic University Library <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
+  </h1>
+  <div class="nav">
     <nav>
-      <a href="#" onclick="redirectTo('index.html')">Home</a>
-      <a href="#" onclick="redirectTo('about.html')">About</a>
-      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="#" onclick="redirectTo('login.html')">Login</a>
-      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <a href="index.html">Home</a>
+      <a href="about.php" onclick="redirectTo('about.php')">About</a>
+      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
-        <div class="dropdown-content">
-          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
-          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
-          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+        <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
+        <div class="dropdown-content" id="deleteDropdown">
+          <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
+          <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
+          <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
+          <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
+          <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Search Catalog</span>
+        <div class="dropdown-content" id="searchDropdown">
+          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
+          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
         </div>
       </div>
       <a href="index.html">
-        <img src="Images/Picture5.svg" alt="logo">
+        <img src="images/search-icon.svg" alt="search icon">
       </a>
+      <input type="text" id="searchInput" placeholder="Search...">
+      <ul id="searchResults"></ul>
     </nav>
   </div>
 
   <p>Welcome to our university library website LMS</p>
 
   <!-- Source of image: https://pixabay.com/photos/library-books-bookcases-bookshelves-488690/-->
-  <img src="Images/Library.jpg" alt="library books">
+  <img src="images/Library.jpg" alt="library books">
 
 </body>
 <footer>
-			&copy; 2024 Ottawa Academic University. All Rights Reserved.
-		</footer>
+  &copy; 2024 Ottawa Academic University. All Rights Reserved.
+</footer>
+
 </html>
+
+

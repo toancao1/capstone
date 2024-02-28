@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -8,7 +7,6 @@
   <script src="index.js"></script>
   <title>University Catalogue</title>
 </head>
-
 <body>
   <h1>Books Page</h1>
   <div class="navbar">
@@ -21,11 +19,11 @@
       <div class="dropdown">
         <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
         <div class="dropdown-content">
-          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
-          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
-          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+          <a href="#" onclick="redirectTo('books.html', event)">Books</a>
+          <a href="#" onclick="redirectTo('journals.html', event)">Journals</a>
+          <a href="#" onclick="redirectTo('images.html', event)">Images</a>
+          <a href="#" onclick="redirectTo('videos.html', event)">Videos</a>
+          <a href="#" onclick="redirectTo('dissertations.html', event)">Dissertations</a>
         </div>
       </div>
       <a href="index.html">
@@ -33,11 +31,10 @@
       </a>
     </nav>
   </div>
-
 <form>
     <label for="title">Title:</label>
     <input type="text" id="title" name="title">
-    <label for="creator">Creator(s):</label>
+    <label for="creator">Creators:</label>
     <input type="text" id="creator" name="creator">
     <label for="date">Date:</label>
     <input type="date" id="date" name="date">
@@ -47,7 +44,7 @@
     <input type="text" id="description" name="description">
     <label for="type">Type:</label>
     <input type="text" id="type" name="type">
-    <label for="contributor">Contributor(s):</label>
+    <label for="contributor">Contributors:</label>
     <input type="text" id="contributor" name="contributor">
     <label for="source">Source:</label>
     <input type="text" id="source" name="source">
