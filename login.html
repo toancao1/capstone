@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <h1>Login</h1>
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
-  <h1>Login Page</h1>
-  <div class="navbar">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#" onclick="redirectTo('about.html')">About</a>
-      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="#" onclick="redirectTo('login.html')">Login</a>
-      <a href="#" onclick="redirectTo('registration.html')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
-        <div class="dropdown-content">
-          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
-          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
-          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
-        </div>
-      </div>
-      <!-- Source: https://www.w3schools.com/howto/howto_css_searchbar.asp-->
-      <a href="index.html">
-        <img src="Images/Picture5.svg" alt="logo">
-      </a>
-    <input type="text" id="searchInput" placeholder="Search...">
-  <ul id="searchResults"></ul>
-    </nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a href="help.html">Help</a>
+    <a href="login.html">Login</a>
+    <input type="text" placeholder="Search">
+    <img src="C:\Users\caoto\Dropbox\PC\Downloads\Picture5.svg" alt="logo">
+  </nav> 
+
+
+<form action="action_page.php" method="post">
+  <div class="imgcontainer">
+    <img src="img_avatar.png" alt="Avatar" class="avatar">
   </div>
-
-
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
@@ -55,21 +42,46 @@
 </form>
 
 <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'">Open Modal</button>
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
 
 <!-- The Modal -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
 class="close" title="Close Modal">&times;</span>
 
- 
-<script>
-document.getElementById('modal-cancel-btn').addEventListener('click', function() {
-  document.getElementById('id01').style.display = 'none';
-});
-</script>
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
 <footer>
-  &copy; 2024 Ottawa Academic University. All Rights Reserved.
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</footer>
+  <a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-instagram"></a>
 </footer>
 </body>
 </html>
