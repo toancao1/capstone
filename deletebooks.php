@@ -1,7 +1,7 @@
 <?php
 // Adapted from: https://www.sourcecodester.com/php/12469/library-management-system-using-php-mysql.html
 require 'database.php';
-
+// https://stackoverflow.com/questions/69950937/sanitize-html-inputs-with-php
 function sanitize($input) {
     return htmlspecialchars($input);
 }
