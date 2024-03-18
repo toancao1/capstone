@@ -40,6 +40,7 @@
         if ($stmt === false) {
             echo "ERROR: Unable to prepare statement. " . mysqli_error($conn);
         } else {
+            https://www.tutorialspoint.com/php/php_function_mysqli_stmt_bind_param.htm#:~:text=Definition%20and%20Usage,markers%20of%20a%20prepared%20statement.
             // Bind parameters
             mysqli_stmt_bind_param($stmt, "ssssssssssssss", $title, $creators, $identifier, $publication_date, $description, $publisher, $language, $contributors, $subject, $rights, $format, $keywords, $summary, $requester_id);
        
