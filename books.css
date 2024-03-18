@@ -1,3 +1,4 @@
+/* Adapted from w3schools.com for code*/
 body {
   background-color: #d3d3d3;
   font-family: Arial, sans-serif;
@@ -18,7 +19,7 @@ nav a {
 }
 
 nav a:hover {
-  color: blue;
+  color: d3d3d3;
 }
 
 form {
@@ -33,48 +34,26 @@ form label {
 }
 
 form input[type=text] {
-  background-image: url('Picture5.png'); /* use the relative path of your icon file */
-  background-size: 20px; /* adjust the size of the icon */
-  background-position: 10px center; /* adjust the position of the icon */
-  background-repeat: no-repeat; /* prevent the icon from repeating */
-  padding-left: 40px; /* add some space for the icon */
+  background-size: 20px; 
+  background-position: 10px center; 
+  background-repeat: no-repeat; 
+  padding-left: 40px; 
   padding: 5px;
 }
 
 form button {
   grid-column: 2 / 3;
   padding: 10px;
-  background-color: blue;
-  color: white;
+  background-color: #d3d3d3; /* Change background color to gray */
+  color: black; /* Change text color to black */
   border: none;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: darkblue;
+  background-color: #a9a9a9; /* Darken the background color on hover */
 }
 
-/* Facebook */
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-/* Twitter */
-.fa-twitter {
-  background-color: #00ACEE;
-  color: white;
-}
-
-/* Instagram */
-.fa-instagram {
-  display: inline-block;
-  color: white;
-  background: #d6249f;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
 
 .dropdown {
   position: relative;
@@ -137,3 +116,23 @@ form button:hover {
   color: black;
 }
 
+/* Style for search input */
+#searchInput {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#searchResults {
+  list-style-type: none;
+  padding: 0;
+}
+
+#searchResults li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#searchResults li:hover {
+  background-color: #f4f4f4;
+}

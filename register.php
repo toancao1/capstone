@@ -1,41 +1,53 @@
 <?php
 session_start();
-// Adapted from: https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/ 
+
+if (isset($_SESSION['logged_user_id'])) {
+    header('Location: logout.php');
+    exit;
+}
+
+require_once __DIR__ . "/database.php";
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Validate the login credentials
-    // Here you would typically include your login validation logic
-    // For demonstration purposes, let's assume the login is successful
-    $login_successful = true;
+    require_once __DIR__ . "/on_register.php";
+    
+    if (
+        isset($_POST["username"]) &&
+        isset($_POST["email"]) &&
+        isset($_POST["password"])
+    ) {
+        $result = on_register($conn);
+    }
+}
 
-    if ($login_successful) {
-        // Set a session variable to indicate the user is logged in
-        $_SESSION['logged_user_id'] = 1; // Assuming the user ID is 1 for demonstration
-        
-        // Redirect to the logged-in page
-        header("Location: logged_in.php");
-        exit;
-    } else {
-        // If login fails, you can display an error message
-        $error_msg = "Invalid email or password. Please try again.";
+// If the user is registered successfully, don't show the post values.
+$show = isset($result["form_reset"]) ? true : false;
+
+function post_value($field)
+{
+    global $show;
+    if (isset($_POST[$field]) && !$show) {
+        echo 'value="' . trim(htmlspecialchars($_POST[$field])) . '"';
+        return;
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="contact.css">
-    <script src="index.js"></script>
-    <title>Login Page</title>
+    <link rel="stylesheet" href="register.css">
+    <title>Register</title>
 </head>
+
 <body>
 <div class="header">
-    <h1>Log in Page</h1>
+    <h1>Register Page</h1>
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
   </div>
   <div class="nav">
@@ -67,35 +79,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
       </div>
       <a href="index.html">
-      <!--<a target="_blank" href="https://icons8.com/icon/M9GRuG4p90hG/thesis">Thesis</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
-      <img src="images/dissertations.svg" alt="dissertations icon">
+      <!--<a target="_blank" href="https://icons8.com/icon/3/add-user-male">Register</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
+      <img src="images/search-icon.svg" alt="search icon">
       </a>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
     </nav>
   </div>
     <div class="container">
-        <form method="POST">
-            <label for="user_Email">Email: <span></span></label>
-            <input type="email" class="input" name="Email" required>
+        <form action="" method="POST" id="theForm">
+            <label for="user_name">Username: <span></span></label>
+            <input type="text" class="input" name="username" <?php post_value("username"); ?>>
+
+            <label for="user_email">Email: <span></span></label>
+            <input type="email" class="input" name="email" <?php post_value("email"); ?>>
 
             <label for="user_pass">Password: <span></span></label>
-            <input type="password" class="input" name="password" required>
-            
-            <!-- Button to submit the form -->
-            <button type="submit" class="continue-button">Login</button>
-            
+            <input type="password" class="input" name="password">
+
+            <?php if (isset($result["msg"])) { ?>
+                <p class="msg<?php if ($result["ok"] === 0) echo " error"; ?>">
+                    <?php echo $result["msg"]; ?>
+                </p>
+            <?php } ?>
+            <button type="button" onclick="window.location.href='./login.php'">Login</button>
         </form>
-        
-        <?php
-        // Display error message if login fails
-        if (isset($error_msg)) {
-            echo '<p class="msg error">' . $error_msg . '</p>';
-        }
-        ?>
     </div>
-    <footer>
-  &copy; 2024 Ottawa Academic University. All Rights Reserved.
+    <?php
+    // JS code to show errors
+    if (isset($result["field_error"])) { ?>
+        <script>
+            let field_error = <?php echo json_encode($result["field_error"]); ?>;
+            let el = null;
+            let msg_el = null;
+            for (let i in field_error) {
+                el = document.querySelector(`input[name="${i}"]`);
+                el.classList.add("error");
+                msg_el = document.querySelector(`label[for="${el.getAttribute("id")}"] span`);
+                msg_el.innerText = field_error[i];
+            }
+        </script>
+    <?php } 
+    ?>
+      <footer>
+    &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
 </body>
 </html>

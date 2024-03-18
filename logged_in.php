@@ -28,9 +28,7 @@ if (isset($_SESSION['login_result'])) {
 // Retrieve the logged-in user ID from the session
 $logged_user_id = isset($_SESSION['logged_user_id']) ? $_SESSION['logged_user_id'] : null;
 
-// Check if the logout action is triggered
 if (isset($_GET['logout'])) {
-    // Destroy the session
     session_destroy();
     // Redirect to the login page after logout
     header("Location: login.php");
@@ -52,7 +50,10 @@ if (isset($_GET['logout'])) {
         <p><?php echo $error_msg; ?></p>
     <?php endif; ?>
     <p>You have successfully logged in.</p>
-    <!-- Add a logout link/button -->
+    <!-- Add a logout link -->
     <a href="?logout=true">Logout</a>
+    <footer>
+    &copy; 2024 Ottawa Academic University. All Rights Reserved.
+</footer>
 </body>
 </html>

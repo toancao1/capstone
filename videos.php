@@ -12,28 +12,28 @@
   <h1>Videos Page</h1>
   <div class="nav">
     <nav>
-      <a href="#" onclick="redirectTo('index.html')">Home</a>
-      <a href="#" onclick="redirectTo('about.html')">About</a>
-      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="#" onclick="redirectTo('login.html')">Login</a>
-      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <a href="#" onclick="redirectTo('index.php')">Home</a>
+      <a href="#" onclick="redirectTo('about.php')">About</a>
+      <a href="#" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="#" onclick="redirectTo('login.php')">Login</a>
+      <a href="#" onclick="redirectTo('registration.php')">Register</a>
       <div class="dropdown">
         <span class="dropbtn" onclick="toggleDropdown()">Search Catalog</span>
         <div class="dropdown-content">
-          <a href="#" onclick="redirectTo('books.html', event)">Books</a>
-          <a href="#" onclick="redirectTo('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectTo('images.html', event)">Images</a>
-          <a href="#" onclick="redirectTo('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectTo('dissertations.html', event)">Dissertations</a>
+          <a href="#" onclick="redirectTo('books.php', event)">Books</a>
+          <a href="#" onclick="redirectTo('journals.php', event)">Journals</a>
+          <a href="#" onclick="redirectTo('images.php', event)">images</a>
+          <a href="#" onclick="redirectTo('videos.php', event)">Videos</a>
+          <a href="#" onclick="redirectTo('dissertations.php', event)">Dissertations</a>
         </div>
       </div>
       <a href="index.html">
-        <img src="Images/Picture5.svg" alt="logo">
+        <img src="images/Picture5.svg" alt="logo">
       </a>
     </nav>
   </div>
 
-  <form>
+  <form method="POST" action="insertvideos.php">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title">
     <label for="directors">Directors:</label>
@@ -42,8 +42,8 @@
     <input type="text" id="producers" name="producers">
     <label for="actors">Actors:</label>
     <input type="text" id="actors" name="actors">
-    <label for="release_year">Release Year:</label>
-    <input type="text" id="release_year" name="release_year">
+    <label for="release_date">Release date:</label>
+    <input type="text" id="release_date" name="release_date">
     <label for="identifier">Identifier:</label>
     <input type="text" id="identifier" name="identifier">
     <label for="description">Description:</label>
@@ -69,9 +69,33 @@
     <input type="text" id="keywords" name="keywords">
     <label for="summary">Summary:</label>
     <input type="text" id="summary" name="summary">
+    <label for="requester_id">requester_id:</label>
+    <input type="text" id="requester_id" name="requester_id">
     <button type="submit">Submit</button>
   </form>
 
+  <?php
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $title = $_POST['title'];
+     $directors = $_POST['directors'];
+     $producers = $_POST['producers'];
+     $actors = $_POST['actors'];
+     $release_date = $_POST['release_date'];
+     $identifier = $_POST['identifier'];
+     $description = $_POST['description'];
+     $language = $_POST['language'];
+     $contributors = isset($_POST['contributor']) ? $_POST['contributor'] : ''; // Corrected key name
+     $genre = $_POST['genre'];
+     $rights = $_POST['rights'];
+     $type = $_POST['type'];
+     $format = $_POST['format'];
+     $keywords = $_POST['keywords']; 
+     $summary = $_POST['summary'];
+     $requester_id = $_POST['requester_id'];
+  }
+ ?>
+ <footer>
+  &copy; 2024 Ottawa Academic University. All Rights Reserved.
+</footer>
 </body>
-
 </html>

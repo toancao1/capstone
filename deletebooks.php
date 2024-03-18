@@ -1,7 +1,7 @@
 <?php
 // Adapted from: https://www.sourcecodester.com/php/12469/library-management-system-using-php-mysql.html
 require 'database.php';
-// https://stackoverflow.com/questions/69950937/sanitize-html-inputs-with-php
+
 function sanitize($input) {
     return htmlspecialchars($input);
 }
@@ -30,9 +30,41 @@ if(isset($_POST['del'])) {
     <link rel="stylesheet" type="text/css" href="deletebooks.css">
 </head>
 <body>
-
-
-
+<h1>Delete books</h1>
+<div class="nav">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.php" onclick="redirectTo('about.php')">About</a>
+      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
+        <div class="dropdown-content" id="deleteDropdown">
+          <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
+          <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
+          <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete images</a>
+          <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
+          <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+        <div class="dropdown-content" id="searchDropdown">
+          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+          <a href="images.php" onclick="redirectTo('images.php')">images</a>
+          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+        </div>
+      </div>
+      <a href="index.html">
+        <img src="images/search-icon.svg" alt="search icon">
+      </a>
+      <input type="text" id="searchInput" placeholder="Search...">
+      <ul id="searchResults"></ul>
+    </nav>
         <?php if(isset($error) && $error !== "") { ?>
             <div class="alert">
                 <strong><?php echo $error; ?></strong>

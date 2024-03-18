@@ -1,7 +1,7 @@
 <?php
 require 'database.php';
-// https://stackoverflow.com/questions/69950937/sanitize-html-inputs-with-php
 
+// https://stackoverflow.com/questions/69950937/sanitize-html-inputs-with-php
 function sanitize($input) {
     return htmlspecialchars($input);
 }
@@ -36,6 +36,7 @@ if(isset($_POST['del'])) {
         <strong><?php echo $error; ?></strong>
     </div>
 <?php } ?>
+<h1>Delete Images</h1>
 
 <table>
     <thead>
