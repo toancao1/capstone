@@ -1,7 +1,5 @@
 /* Adapted from w3schools.com for code*/
-/* Adapted from w3schools.com for code*/
-/* Adapted from w3schools.com for code*/
-/* Adapted from w3schools.com for code*/
+/*https://www.colorhexa.com/a9a9a9*/
 body {
   background-color: #d3d3d3;
   font-family: Arial, sans-serif;
@@ -32,53 +30,32 @@ form {
   margin: 20px;
 }
 
+/*https://stackoverflow.com/questions/35066871/how-to-put-all-labels-in-bold-with-css*/
 form label {
   font-weight: bold;
 }
-
+/*https://stackoverflow.com/questions/39071349/html-form-input-background-image*/
 form input[type=text] {
-  background-image: url('Picture5.png'); 
   background-size: 20px; 
   background-position: 10px center; 
   background-repeat: no-repeat; 
   padding-left: 40px; 
   padding: 5px;
 }
-
+/*https://www.color-hex.com/color/d3d3d3*/
 form button {
   grid-column: 2 / 3;
   padding: 10px;
-  background-color: white;
-  color: black;
+  background-color: #d3d3d3; 
+  color: black; 
   border: none;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: d3d3d3;
+  background-color: #a9a9a9; 
 }
 
-/* Facebook */
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-/* Twitter */
-.fa-twitter {
-  background-color: #00ACEE;
-  color: white;
-}
-
-/* Instagram */
-.fa-instagram {
-  display: inline-block;
-  color: white;
-  background: #d6249f;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
 
 .dropdown {
   position: relative;
@@ -94,17 +71,15 @@ form button:hover {
   border-radius: 5px;
 }
 
+/*https://www.w3schools.com/css/css_dropdowns.asp*/
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #fff;
   min-width: 160px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  overflow-y: auto;
-  max-height: 200px;
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .dropdown-content a {
@@ -141,6 +116,7 @@ form button:hover {
   color: black;
 }
 
+/*https://www.w3schools.com/css/tryit.asp?filename=trycss_forms*/
 /* Style for search input */
 #searchInput {
   width: 300px;
@@ -148,6 +124,7 @@ form button:hover {
   font-size: 16px;
 }
 
+/*https://www.w3schools.com/cssref/pr_list-style-type.php*/
 #searchResults {
   list-style-type: none;
   padding: 0;
@@ -161,3 +138,23 @@ form button:hover {
 #searchResults li:hover {
   background-color: #f4f4f4;
 }
+
+/*https://www.w3.org/Style/Examples/007/center.en.html*/
+.header {
+  background-color: #F8F3F3; 
+  padding: 10px;
+  text-align: center; 
+}
+
+.header h1 {
+  margin: 0; 
+  color: #333; 
+}
+
+.header img {
+  max-width: 100%;
+  margin-left: -70px;
+  height: auto; 
+}
+
+

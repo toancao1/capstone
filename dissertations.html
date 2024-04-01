@@ -1,51 +1,60 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Dissertations</title>
   <link rel="stylesheet" href="dissertations.css">
   <script src="index.js"></script>
-  <h1>University Catalogue (Dissertations)</h1>
-  <title>Catalogue</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
-
 <body>
- 
-  <body>
+<div class="header">
     <h1>Dissertations Page</h1>
-  <div class="nav">
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
+<div class="nav">
     <nav>
-      <a href="#">Home</a>
-      <a href="#" onclick="redirectTo('about.html')">About</a>
-      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="#" onclick="redirectTo('login.html')">Login</a>
-      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <a href="index.html">Home</a>
+      <a href="about.php" onclick="redirectTo('about.php')">About</a>
+      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Select catalog</span>
-        <div class="dropdown-content">
-          <a href="#" onclick="redirectTo('books.html', event)">Books</a>
-          <a href="#" onclick="redirectTo('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectTo('images.html', event)">Images</a>
-          <a href="#" onclick="redirectTo('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectTo('dissertations.html', event)">Dissertations</a>
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+        <div class="dropdown-content" id="searchDropdown">
+          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
+          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <div class="dropdown">
+            <span class="dropbtn" onclick="toggleDropdown('modifyDropdown')">Modify Catalog</span>
+            <div class="dropdown-content" id="modifyDropdown">
+              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="index.html">
-        <img src="Images/Picture5.svg" alt="logo">
-      </a>
-    </nav>
-    <input type="text" id="searchInput" placeholder="Search...">
-    <ul id="searchResults"></ul>
-      </nav>  
+      <input type="text" id="searchInput" placeholder="Search...">
+        <ul id="searchResults"></ul>
+        <a href="dissertations.php">
+          <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>-->       
+          <img src="images/search-icon.png" alt="search icon"width="100" height="80">  
+          </a>
+       <!--https://icons8.com/icon/M9GRuG4p90hG/thesis" (Thesis)-->
+       <a href="dissertations.php"><img src="images/dissertations.png" alt="dissertations icon" width="100" height="80"></a>
+      </nav>
   </div>
-
-  <form>
+  <form method="POST" action="insertdissertations.php">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title">
-    <label for="creator">Creator(s):</label>
-    <input type="text" id="creator" name="creator">
+    <label for="creators">Creators:</label>
+    <input type="text" id="creators" name="creators">
     <label for="identifier">Identifier:</label>
     <input type="text" id="identifier" name="identifier">
     <label for="publisher">Publisher:</label>
@@ -82,9 +91,11 @@
     <input type="text" id="keywords" name="keywords">
     <label for="summary">Summary:</label>
     <input type="text" id="summary" name="summary">
-    <button type="submit">Submit</button>
+    <label for="requester_id">Requester ID:</label>
+    <input type="text" id="requester_id" name="requester_id">
+    <button type="submit"><strong>Submit</strong></button>
   </form>
-<footer>
+ <footer>
   &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
 </body>

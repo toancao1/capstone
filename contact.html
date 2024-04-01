@@ -1,4 +1,4 @@
-<!--https://www.w3schools.com/howto/howto_css_social_media_buttons.asp-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,62 +7,83 @@
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
-    <h1>Contact Us</h1>
     <!--source: https://www.w3schools.com/howto/howto_css_contact_form.asp-->
-    <title>Contact Page</title>
-  </head>
-  <body>
-    <h1>Contact Page</h1>
-  <div class="navbar">
+    <!--Adapted from : https://www.codexworld.com/create-simple-contact-form-php-send-email/-->
+</head>
+<body>
+<div class="header">
+    <h1>Contact Us Page</h1>
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
+<div class="nav">
     <nav>
-      <a href="#">Home</a>
-      <a href="#" onclick="redirectTo('about.html')">About</a>
-      <a href="#" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="#" onclick="redirectTo('login.html')">Login</a>
-      <a href="#" onclick="redirectTo('registration.html')">Register</a>
+      <a href="index.html">Home</a>
+      <a href="about.php" onclick="redirectTo('about.php')">About</a>
+      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown()">Select catalog</span>
-        <div class="dropdown-content">
-          <a href="#" onclick="redirectToAndStop('books.html', event)">Books</a>
-          <a href="#" onclick="redirectToAndStop('journals.html', event)">Journals</a>
-          <a href="#" onclick="redirectToAndStop('images.html', event)">Images</a>
-          <a href="#" onclick="redirectToAndStop('videos.html', event)">Videos</a>
-          <a href="#" onclick="redirectToAndStop('dissertations.html', event)">Dissertations</a>
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+        <div class="dropdown-content" id="searchDropdown">
+          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
+          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <div class="dropdown">
+            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+            <div class="dropdown-content" id="ModifyDropdown">
+              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="index.html">
-        <img src="images/Picture5.svg" alt="logo">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <ul id="searchResults"></ul>
+      <a href="contact.php">
+      <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->
+      <img src="images/search-icon.png" alt="search icon"width="100" height="80">  
       </a>
-    </nav>
-    <input type="text" id="searchInput" placeholder="Search...">
-    <ul id="searchResults"></ul>
-      </nav>  
-  </div>
-    <div class="container">
-        <form action="contact.php">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="First Name">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Last Name">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="email">
-          <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write your message here..." style="height:300px"></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-</body>
-<p>Find items through our LMS. Contact us if you need help searching for items.</p>
+       <!-- Source of image: <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a>-->
+       <a href="index.html"><img src="images/email.png" alt="email icon" width="100" height="80"></a>
+      </nav>
+</div>
+<p>Contact us if you need help searching for items.</p>
 
-    <footer div class="icon-bar">    
+<div class="container">
+    <!-- https://www.w3schools.com/php/php_forms.asp-->
+<form>
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="First Name">
+    <span class="error"><?php echo $firstnameErr; ?></span><br><br>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Last Name">
+    <span class="error"><?php echo $lastnameErr; ?></span><br><br>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Email">
+    <span class="error"><?php echo $emailErr; ?></span><br><br>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write your message here..."></textarea><br><br>
+    <span class="error"><?php echo $subjectErr; ?></span><br><br>
+
+    <button type="submit" onclick="window.location.href='./thankyou.php'"><strong>Submit</strong></button>
+</form>
+</div>
+<footer>
+    <div class="icon-bar">    
         <a href="https://www.facebook.com" class="fa fa-facebook"></a>
         <a href="https://www.x.com" class="fa fa-twitter"></a>
         <a href="https://www.instagram.com" class="fa fa-instagram"></a>
     </div>
-    </footer>
-<footer>
-  &copy; 2024 Ottawa Academic University. All Rights Reserved.
+    &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
 </body>
 </html>
-

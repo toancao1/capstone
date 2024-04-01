@@ -1,22 +1,17 @@
 <?php
 session_start();
+$emailErr = $passwordErr = "";
 // Adapted from: https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/ 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Validate the login credentials
-    // Here you would typically include your login validation logic
-    // For demonstration purposes, let's assume the login is successful
+    
     $login_successful = true;
 
     if ($login_successful) {
-        // Set a session variable to indicate the user is logged in
-        $_SESSION['logged_user_id'] = 1; // Assuming the user ID is 1 for demonstration
+        $_SESSION['logged_user_id'] = 1; 
         
-        // Redirect to the logged-in page
         header("Location: logged_in.php");
         exit;
     } else {
-        // If login fails, you can display an error message
         $error_msg = "Invalid email or password. Please try again.";
     }
 }
@@ -26,19 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="login.css">
     <script src="index.js"></script>
     <title>Login Page</title>
 </head>
 <body>
 <div class="header">
-    <h1>Log in Page</h1>
-    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
-  </div>
-  <div class="nav">
+    <h1>Login Page</h1>
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
+<div class="nav">
     <nav>
       <a href="index.html">Home</a>
       <a href="about.php" onclick="redirectTo('about.php')">About</a>
@@ -47,48 +41,55 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
       <a href="register.php" onclick="redirectTo('register.php')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-        <div class="dropdown-content" id="deleteDropdown">
-          <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
-          <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
-          <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
-          <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
-          <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Search Catalog</span>
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
         <div class="dropdown-content" id="searchDropdown">
           <a href="books.php" onclick="redirectTo('books.php')">Books</a>
           <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
           <a href="images.php" onclick="redirectTo('images.php')">Images</a>
           <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
           <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <div class="dropdown">
+            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+            <div class="dropdown-content" id="ModifyDropdown">
+              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="index.html">
-      <!--<a target="_blank" href="https://icons8.com/icon/M9GRuG4p90hG/thesis">Thesis</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
-      <img src="images/dissertations.svg" alt="dissertations icon">
-      </a>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
+      <a href="index.html">
+      <a href="login.php">
+      <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->
+      <img src="images/search-icon.png" alt="search icon"width="100" height="80">  
+    </a>
+         <!-- Source of image: <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>-->
+         <a href="index.html"><img src="images/Home.png" alt="home icon" width="100" height="80"></a>
+    </nav>
+</div>
     </nav>
   </div>
-    <div class="container">
-        <form method="POST">
-            <label for="user_Email">Email: <span></span></label>
-            <input type="email" class="input" name="Email" required>
+  <div class="container">
+    <!-- https://www.w3schools.com/php/php_forms.asp-->
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-            <label for="user_pass">Password: <span></span></label>
-            <input type="password" class="input" name="password" required>
-            
-            <!-- Button to submit the form -->
-            <button type="submit" class="continue-button">Login</button>
-            
-        </form>
-        
+    <label for="email"><strong>Email</strong></label>
+    <input type="email" id="email" name="email" placeholder="Email">
+    <span class="error"><?php echo $emailErr; ?></span><br><br>
+
+    <label for="password"><strong>Password</strong></label>
+<input type="password" id="password" name="password" placeholder="Password">
+<span class="error"><?php echo $passwordErr; ?></span><br><br>
+
+    <button type="submit" onclick="window.location.href='./loggedin.php'"><strong>Submit</strong></button>
+</form>
+</div>
         <?php
-        // Display error message if login fails
+        // Display error 
         if (isset($error_msg)) {
             echo '<p class="msg error">' . $error_msg . '</p>';
         }

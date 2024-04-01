@@ -1,62 +1,62 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="index.css">
-  <script src="index.js"></script>
-  <title>University Catalogue</title>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="index.js"></script>
 </head>
-
 <body>
-  <div class="header">
+<div class="header">
     <h1>Home Page</h1>
-    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
-  </div>
-  <div class="nav">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" onclick="redirectTo('about.html')">About</a>
-      <a href="contact.html" onclick="redirectTo('contact.html')">Contact</a>
-      <a href="login.html" onclick="redirectTo('login.html')">Login</a>
-      <a href="logout.html" onclick="redirectTo('logout.html')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-        <div class="dropdown-content" id="deleteDropdown">
-          <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
-          <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
-          <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
-          <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
-          <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
+<div class="nav">
+  <nav>
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+    <a href="index.html">Home</a>
+    <a href="about.php" onclick="redirectTo('about.php')">About</a>
+    <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+    <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+    <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+    <a href="register.php" onclick="redirectTo('register.php')">Register</a>
+    <div class="dropdown">
+      <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+      <div class="dropdown-content" id="searchDropdown">
+        <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+        <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+        <a href="images.php" onclick="redirectTo('images.php')">Images</a>
+        <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+        <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+        <div class="dropdown">
+          <span class="dropbtn" onclick="toggleDropdown('modifyDropdown')">Modify Catalog</span>
+          <div class="dropdown-content" id="modifyDropdown">
+            <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+            <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+            <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+            <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+            <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+          </div>
         </div>
       </div>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-        <div class="dropdown-content" id="searchDropdown">
-          <a href="books.html" onclick="redirectTo('books.html')">Books</a>
-          <a href="journals.html" onclick="redirectTo('journals.html')">Journals</a>
-          <a href="images.html" onclick="redirectTo('images.html')">Images</a>
-          <a href="videos.html" onclick="redirectTo('videos.html')">Videos</a>
-          <a href="dissertations.html" onclick="redirectTo('dissertations.html')">Dissertations</a>
-        </div>
-      </div>
-      <input type="text" id="searchInput" placeholder="Search...">
-      <ul id="searchResults"></ul>
-        <!-- Source of image: https://www.flaticon.com/free-icons/home-->
-      <a href="index.html"><img src="images/Home.png" alt="home icon" width="100" height="80"></a>
-      </nav>
-  </div>
-
-  <p>Welcome to our university library website LMS.</p>
-
+    </div>
+    <!--w3schools.com-->
+    <!--https://www.w3schools.com/howto/howto_js_filter_lists.asp-->
+        <input type="text" id="searchInput" placeholder="Search...">
+        <ul id="searchResults"></ul>
+        <a href="index.html">
+          <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->
+          <img src="images/search-icon.png" alt="search icon" width="100" height="80"></a>
+        <!-- Source of image: <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>-->
+        <a href="index.html"><img src="images/Home.png" alt="home icon" width="100" height="80"></a>
+    </nav>
+</div>
+  <p>Welcome to our university library LMS (Library Management System).</p>
   <!-- Source of image: https://pixabay.com/photos/library-books-bookcases-bookshelves-488690/-->
-  <img src="images/Library.jpg" alt="library books">
-
+  <img src="images/Library.jpg" alt="library books" width="800" height="500">
 </body>
 <footer>
   &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
-
 </html>

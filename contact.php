@@ -1,5 +1,9 @@
 <?php
+// https://w3schools.invisionzone.com/topic/57515-need-help-getting-form-data-to-insert-in-table-with-php/
+// https://slideplayer.com/slide/8793672/ 
+// https://stackoverflow.com/questions/25981194/what-is-the-purpose-of-setting-variables-to-empty-after-defining-them
 // Define variables and set to empty values
+// https://www.freecodecamp.org/news/creating-html-forms/
 $firstnameErr = $lastnameErr = $emailErr = $subjectErr = "";
 $firstName = $lastName = $subject = $email = "";
 
@@ -75,41 +79,45 @@ function test_input($data) {
 <body>
 <div class="header">
     <h1>Contact Us Page</h1>
-    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
 <div class="nav">
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.php" onclick="redirectTo('about.php')">About</a>
-        <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-        <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-        <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-        <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-        <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-            <div class="dropdown-content" id="deleteDropdown">
-                <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
-                <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
-                <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
-                <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
-                <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
+      <a href="index.html">Home</a>
+      <a href="about.php" onclick="redirectTo('about.php')">About</a>
+      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
+      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
+      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
+      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
+      <div class="dropdown">
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+        <div class="dropdown-content" id="searchDropdown">
+          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
+          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
+          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
+          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
+          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <div class="dropdown">
+            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+            <div class="dropdown-content" id="ModifyDropdown">
+              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
             </div>
+          </div>
         </div>
-        <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-            <div class="dropdown-content" id="searchDropdown">
-                <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-                <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-                <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-                <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-                <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
-            </div>
-        </div>
-        <input type="text" id="searchInput" placeholder="Search...">
-        <ul id="searchResults"></ul>
-        <!-- Source of image: https://www.freepik.com/icons/contact From FreePik-->
-        <a href="contact.php"><img src="images/email.png" alt="email icon" width="100" height="80"></a>
-    </nav>
+      </div>
+      <input type="text" id="searchInput" placeholder="Search...">
+      <ul id="searchResults"></ul>
+      <a href="contact.php">
+      <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->
+      <img src="images/search-icon.png" alt="search icon"width="100" height="80">  
+      </a>
+       <!-- Source of image: <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Freepik - Flaticon</a>-->
+       <a href="index.html"><img src="images/email.png" alt="email icon" width="100" height="80"></a>
+      </nav>
 </div>
 <p>Contact us if you need help searching for items.</p>
 
@@ -132,7 +140,7 @@ function test_input($data) {
     <textarea id="subject" name="subject" placeholder="Write your message here..."></textarea><br><br>
     <span class="error"><?php echo $subjectErr; ?></span><br><br>
 
-    <button type="submit" class="button">Submit</button>
+    <button type="submit" onclick="window.location.href='./thankyou.php'"><strong>Submit</strong></button>
 </form>
 </div>
 <footer>

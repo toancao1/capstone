@@ -1,5 +1,7 @@
 <?php
 session_start();
+// https://stackoverflow.com/questions/44240992/php-html-form-validation
+$usernameErr = $emailErr = $passwordErr = "";
 
 if (isset($_SESSION['logged_user_id'])) {
     header('Location: logout.php');
@@ -8,7 +10,6 @@ if (isset($_SESSION['logged_user_id'])) {
 
 require_once __DIR__ . "/database.php";
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once __DIR__ . "/on_register.php";
     
@@ -33,24 +34,24 @@ function post_value($field)
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="register.css">
-    <title>Register</title>
+    <script src="index.js"></script>
+    <title>Register Page</title>
 </head>
-
 <body>
 <div class="header">
     <h1>Register Page</h1>
-    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="600" height="150">
-  </div>
-  <div class="nav">
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
+<div class="nav">
     <nav>
       <a href="index.html">Home</a>
       <a href="about.php" onclick="redirectTo('about.php')">About</a>
@@ -59,68 +60,61 @@ function post_value($field)
       <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
       <a href="register.php" onclick="redirectTo('register.php')">Register</a>
       <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-        <div class="dropdown-content" id="deleteDropdown">
-          <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
-          <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
-          <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
-          <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
-          <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Search Catalog</span>
+        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
         <div class="dropdown-content" id="searchDropdown">
           <a href="books.php" onclick="redirectTo('books.php')">Books</a>
           <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
           <a href="images.php" onclick="redirectTo('images.php')">Images</a>
           <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
           <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <div class="dropdown">
+            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+            <div class="dropdown-content" id="ModifyDropdown">
+              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
+              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
+              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
+              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
+              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="index.html">
-      <!--<a target="_blank" href="https://icons8.com/icon/3/add-user-male">Register</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
-      <img src="images/search-icon.svg" alt="search icon">
-      </a>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
+      <a href="register.php">
+      <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->
+      <img src="images/search-icon.png" alt="search icon"width="100" height="80">  
+    </a>
+         <!-- Source of image: <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>-->
+         <a href="index.html"><img src="images/Home.png" alt="home icon" width="100" height="80"></a>
     </nav>
-  </div>
-    <div class="container">
-        <form action="" method="POST" id="theForm">
-            <label for="user_name">Username: <span></span></label>
-            <input type="text" class="input" name="username" <?php post_value("username"); ?>>
+</div>
+    </nav>
+  </div class="container">
+    <!-- https://www.w3schools.com/php/php_forms.asp-->
+    <!--https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/-->
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<label for="username"><strong>Username</strong></label>
+<input type="text" id="username" name="username" placeholder="Username">
+<span class="error"><?php echo $usernameErr; ?></span><br><br>
 
-            <label for="user_email">Email: <span></span></label>
-            <input type="email" class="input" name="email" <?php post_value("email"); ?>>
+<label for="email"><strong>Email</strong></label>
+<input type="email" id="email" name="email" placeholder="Email">
+<span class="error"><?php echo $emailErr; ?></span><br><br>
 
-            <label for="user_pass">Password: <span></span></label>
-            <input type="password" class="input" name="password">
+<label for="password"><strong>Password</strong></label>
+<input type="password" id="password" name="password" placeholder="Password">
+<span class="error"><?php echo $passwordErr; ?></span><br><br>
 
-            <?php if (isset($result["msg"])) { ?>
-                <p class="msg<?php if ($result["ok"] === 0) echo " error"; ?>">
-                    <?php echo $result["msg"]; ?>
-                </p>
-            <?php } ?>
-            <button type="button" onclick="window.location.href='./login.php'">Login</button>
-        </form>
-    </div>
-    <?php
-    // JS code to show errors
-    if (isset($result["field_error"])) { ?>
-        <script>
-            let field_error = <?php echo json_encode($result["field_error"]); ?>;
-            let el = null;
-            let msg_el = null;
-            for (let i in field_error) {
-                el = document.querySelector(`input[name="${i}"]`);
-                el.classList.add("error");
-                msg_el = document.querySelector(`label[for="${el.getAttribute("id")}"] span`);
-                msg_el.innerText = field_error[i];
-            }
-        </script>
-    <?php } 
-    ?>
+<button type="submit" onclick="window.location.href='./login.php'"><strong>Submit</strong></button>
+</form>
+</div>
+        <?php
+        // Display error message if login fails
+        if (isset($error_msg)) {
+            echo '<p class="msg error">' . $error_msg . '</p>';
+        }
+        ?>
       <footer>
     &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>

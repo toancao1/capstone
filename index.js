@@ -12,6 +12,8 @@ function toggleDropdown() {
 }
 
 // Close  dropdown menu if user clicks outside of it
+// https://www.outsystems.com/forums/discussion/70379/dropdown-with-javascript-and-css-wont-close-properly-when-clicking-outside-of-it/
+// https://dev.to/am20dipi/how-to-build-a-simple-search-bar-in-javascript-4onf
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns =  document.getElementsByClassName("dropdown-content");
@@ -24,20 +26,6 @@ window.onclick = function(event) {
   }
 };
 
-// https://masteringjs.io/tutorials/fundamentals/filter-array-of-objects
-// https://masteringjs.io/tutorials/fundamentals/arrow
-const pages = [
-  { title: 'Home', url: 'index.html' },
-  { title: 'About', url: 'about.html' },
-  { title: 'Contact', url: 'contact.html' },
-  { title: 'Login', url: 'login.html' },
-  { title: 'Books', url: 'books.html' },
-  { title: 'Journals', url: 'journals.html' },
-  { title: 'Dissertations', url: 'dissertations.html' },
-  { title: 'Images', url: 'images.html' },
-  { title: 'Videos', url: 'videos.html' },
-];
-
 // https://medium.com/@vmaineng/filtering-results-in-react-using-a-search-bar-327c92c93d94
 // Function filter search items
 function filterPages(searchTerm) {
@@ -46,23 +34,54 @@ function filterPages(searchTerm) {
   });
 }
 
+// https://masteringjs.io/tutorials/fundamentals/filter-array-of-objects
+// https://masteringjs.io/tutorials/fundamentals/arrow
+const pages = [
+  { title: 'Home', url: 'index.html' },
+  { title: 'About', url: 'about.html' },
+  { title: 'Contact', url: 'contact.html' },
+  { title: 'Books', url: 'books.html' },
+  { title: 'Journals', url: 'journals.html' },
+  { title: 'Dissertations', url: 'dissertations.html' },
+  { title: 'Images', url: 'images.html' },
+  { title: 'Videos', url: 'videos.html' },
+];
+
 // https://stackoverflow.com/questions/42043803/javascript-simple-search-how-to-display-result-on-new-page
 // https://www.w3schools.com/js/js_window_location.asp
 // https://medium.com/@ianflurkey/using-foreach-and-innerhtml-to-create-search-results-6b11b9985d6b and https://forum.freecodecamp.org/t/adding-an-event-listener-to-dynamically-created-elements/185906/2
 // https://www.w3schools.com/jsref/prop_node_textcontent.asp
-// Function for search results
-function displayResults(results) {
-  const searchResults = document.getElementById('searchResults');
-  searchResults.innerHTML = 'empty';
-  results.forEach(result => {
-    const div = document.createElement('div');
-    div.textContent = result.title;
-    div.addEventListener('click', () => {
-      window.location.href = result.url;
-    });
-    searchResults.appendChild(div);
+// Function for filtering search items
+function filterPages(searchTerm) {
+  return pages.filter(page => {
+      return page.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 }
+
+// Function for displaying search results
+// https://stackoverflow.com/questions/63204750/addeventlistener-to-innerhtml
+// https://forum.freecodecamp.org/t/adding-an-event-listener-to-dynamically-created-elements/185906/2
+function displayResults(results) {
+  const searchResults = document.getElementById('searchResults');
+  searchResults.innerHTML = '';
+  results.forEach(result => {
+      const div = document.createElement('div');
+      div.textContent = result.title;
+      div.addEventListener('click', () => {
+          window.location.href = result.url;
+      });
+      searchResults.appendChild(div);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const filteredPages = filterPages(searchTerm);
+      displayResults(filteredPages);
+  });
+});
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
 // Event listener for search input
@@ -74,11 +93,3 @@ document.addEventListener('DOMContentLoaded', function () {
     displayResults(filteredPages);
   });
 });
-
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
