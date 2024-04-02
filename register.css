@@ -50,6 +50,7 @@ form button {
   color: black; 
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 form button:hover {
@@ -157,3 +158,17 @@ form button:hover {
   height: auto; 
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button[type="submit"] {
+  margin-top: 20px; 
+}
+
+footer {
+  margin-top: 20px; 
+  text-align: center;
+}

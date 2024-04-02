@@ -1,19 +1,22 @@
 <?php
 function on_register($conn) {
+    // Ensure the database connection is established
+    if (!$conn) {
+        return ["ok" => 0, "msg" => "Database connection error.", "form_reset" => false];
+    }
+
     $username = trim($_POST["username"]);
-    $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    if (empty($username) || empty($email) || empty($password)) {
+    if (empty($username) || empty($password)) {
         return ["ok" => 0, "msg" => "All fields are required.", "form_reset" => true];
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return ["ok" => 0, "msg" => "Invalid email format.", "form_reset" => true];
     } else {
-        //hash password
+        // Hash password
+        $password = "user_password";
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+        
         // Prepare and execute the query to insert user into database
-        $sql = "INSERT INTO users (Username, Email, Password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO librarians (username, password) VALUES (?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
 
         // Check if prepare() succeeded
@@ -22,7 +25,7 @@ function on_register($conn) {
         }
 
         // Bind parameters
-        mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashed_password);
+        mysqli_stmt_bind_param($stmt, "ss", $username, $hashed_password);
 
         // Execute the statement
         $success = mysqli_stmt_execute($stmt);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // https://stackoverflow.com/questions/44240992/php-html-form-validation
-$usernameErr = $emailErr = $passwordErr = "";
+$usernameErr = $passwordErr = "";
 
 if (isset($_SESSION['logged_user_id'])) {
     header('Location: logout.php');
@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     if (
         isset($_POST["username"]) &&
-        isset($_POST["email"]) &&
         isset($_POST["password"])
     ) {
         $result = on_register($conn);
@@ -94,21 +93,24 @@ function post_value($field)
     <!-- https://www.w3schools.com/php/php_forms.asp-->
     <!--https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/-->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-<label for="username"><strong>Username</strong></label>
+<label for="username"><strong>username</strong></label>
 <input type="text" id="username" name="username" placeholder="Username">
 <span class="error"><?php echo $usernameErr; ?></span><br><br>
-
-<label for="email"><strong>Email</strong></label>
-<input type="email" id="email" name="email" placeholder="Email">
-<span class="error"><?php echo $emailErr; ?></span><br><br>
 
 <label for="password"><strong>Password</strong></label>
 <input type="password" id="password" name="password" placeholder="Password">
 <span class="error"><?php echo $passwordErr; ?></span><br><br>
+<button type="submit" onclick="window.location.href='./login.php'"><strong>Register</strong></button>
 
-<button type="submit" onclick="window.location.href='./login.php'"><strong>Submit</strong></button>
-</form>
+<div>
+    <label for="agree">
+        <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
+        with the terms of service. Already a member?<br> <button type="submit" onclick="window.location.href='./login.php'"><strong>Login</strong></button>
+<br>
+    </label>
 </div>
+        <!--https://www.phptutorial.net/php-tutorial/php-registration-form/-->
+    </form>
         <?php
         // Display error message if login fails
         if (isset($error_msg)) {
