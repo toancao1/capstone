@@ -11,14 +11,14 @@ if (isset($_SESSION['logged_user_id'])) {
 require_once __DIR__ . "/database.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    require_once __DIR__ . "/on_register.php";
+    require_once __DIR__ . "/register.php";
     
     if (
         isset($_POST["username"]) &&
         isset($_POST["email"]) &&
         isset($_POST["password"])
     ) {
-        $result = on_register($conn);
+        $result = register($conn);
     }
 }
 
