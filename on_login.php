@@ -19,7 +19,7 @@ function on_login($conn, $username, $password)
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    // Check if user with the provided username exists
+    // Check if user if the provided username exists
     if (!$result || mysqli_num_rows($result) === 0) {
         return [
             "ok" => 0,
@@ -38,7 +38,6 @@ function on_login($conn, $username, $password)
         ];
     }
 
-    // Start the session and set the logged-in user ID
     session_start();
     $_SESSION['logged_user_id'] = $user["id"];
 

@@ -19,7 +19,6 @@ function on_register($conn) {
         $sql = "INSERT INTO librarians (username, password) VALUES (?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
 
-        // Check if prepare() succeeded
         if (!$stmt) {
             return ["ok" => 0, "msg" => "Database error: " . mysqli_error($conn), "form_reset" => false];
         }
@@ -30,7 +29,6 @@ function on_register($conn) {
         // Execute the statement
         $success = mysqli_stmt_execute($stmt);
 
-        // Check if execution succeeded
         if ($success) {
             // Registration successful
             return ["ok" => 1, "msg" => "Registration successful.", "form_reset" => true];
