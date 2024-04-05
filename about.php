@@ -15,27 +15,27 @@
 <div class="nav">
     <nav>
       <a href="index.html">Home</a>
-      <a href="about.php" onclick="redirectTo('about.php')">About</a>
-      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
+      <a href="about.php">About</a>
+      <a href="contact.php">Contact</a>
+      <a href="login.php">Login</a>
+      <a href="logout.php">Logout</a>
+      <a href="register.php">Register</a>
       <div class="dropdown">
         <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
         <div class="dropdown-content" id="searchDropdown">
-          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
+          <a href="books.php">Books</a>
+          <a href="journals.php">Journals</a>
+          <a href="images.php">Images</a>
+          <a href="videos.php">Videos</a>
+          <a href="dissertations.php">Dissertations</a>
           <div class="dropdown">
             <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
             <div class="dropdown-content" id="ModifyDropdown">
-              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
-              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
-              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
-              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
-              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+              <a href="modifybooks.php">Modify Books</a>
+              <a href="modifyjournals.php">Modify Journals</a>
+              <a href="modifyimages.php">Modify Images</a>
+              <a href="modifyvideos.php">Modify Videos</a>
+              <a href="modifydissertations.php">Modify Dissertations</a>
             </div>
           </div>
         </div>

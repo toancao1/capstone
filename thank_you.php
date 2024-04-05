@@ -1,56 +1,58 @@
 <?php
 // https://www.geeksforgeeks.org/simple-contact-form-using-html-css-and-php/
 // https://www.w3schools.com/php/php_form_complete.asp
-// Email configuration 
-$toEmail = 'admin@example.com'; 
-$fromName = 'Sender Name'; 
-$formEmail = 'sender@example.com'; 
+// https://www.codexworld.com/send-beautiful-html-email-using-php/
+// https://stackoverflow.com/questions/42255375/filter-varemail-filter-validate-email-not-working-in-if-condition
+// https://stackoverflow.com/questions/20631374/php-email-validation-filter-validate-email-not-working
+// Email config
+$Email = 'bob@gmail.com';
+$fromName = 'Bob';
+$formEmail = 'bob@gmail.com';
 
 $statusMsg = '';
-$headers = ''; 
+$headers = '';
 
-if(isset($_POST['submit'])){ 
-    $firstname = trim($_POST['firstname']); 
-    $lastname = trim($_POST['lastname']); 
-    $email = trim($_POST['email']); 
-    $subject = trim($_POST['subject']); 
-    $Subject = trim($_POST['Subject']); 
+if(isset($_POST['submit'])){
+    $firstname = trim($_POST['firstname']);
+    $lastname = trim($_POST['lastname']);
+    $email = trim($_POST['email']);
+    $subject = trim($_POST['subject']);
 
-    if(empty($firstname)){ 
-         $statusMsg .= 'Please enter your first name.<br/>'; 
-    } 
-    if(empty($lastname)){ 
-        $statusMsg .= 'Please enter your last name.<br/>'; 
-    } 
-    if(empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false){ 
-        $statusMsg .= 'Please enter a valid email.<br/>'; 
-    } 
-    if(empty($subject)){ 
-        $statusMsg .= 'Please enter subject.<br/>'; 
-    } 
-
-    if(empty($statusMsg)){ 
-        $subject = 'New contact request submitted'; 
-        $htmlContent = " 
-            <h2>Contact Request Details</h2> 
-            <p><b>First Name: </b>".$firstname."</p> 
-            <p><b>Last Name: </b>".$lastname."</p> 
-            <p><b>Email: </b>".$email."</p> 
-            <p><b>Subject: </b>".$subject."</p> 
-            <p><b>Subject: </b>".$Subject."</p> 
-        "; 
-         
-       
-        $headers .= 'From:'.$fromName.' <'.$formEmail.'>' . "\r\n"; 
-         
-        mail($toEmail, $subject, $htmlContent, $headers); 
-         
-        $status = 'success'; 
-        header("Location: thank_you.php"); 
-     } 
+    if(empty($firstname)){
+        $statusMsg .= 'Please enter your first name.<br/>';
     }
-?>
+    if(empty($lastname)){
+        $statusMsg .= 'Please enter your last name.<br/>';
+    }
+    if(empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL == FALSE)){
+        $statusMsg .= 'Please enter a valid email.<br/>';
+    }
+    if(empty($subject)){
+        $statusMsg .= 'Please enter subject.<br/>';
+    }
 
+    if(empty($statusMsg)){
+        $subject = 'New contact request submitted';
+        $htmlContent = "
+            <h2>Contact Request Details</h2>
+            <p><b>First Name: </b>".$firstname."</p>
+            <p><b>Last Name: </b>".$lastname."</p>
+            <p><b>Email: </b>".$email."</p>
+            <p><b>Subject: </b>".$subject."</p>
+        ";
+
+        $headers .= 'From: '.$fromName.' <'.$formEmail.'>' . "\r\n";
+
+        if(mail($Email, $subject, $htmlContent, $headers)){
+            $statusMsg = 'success';
+            header("Location: thank_you.php");
+            exit;
+        } else {
+            $statusMsg = 'Error sending email. Please try again later.';
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -67,33 +69,34 @@ if(isset($_POST['submit'])){
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
 <div class="nav">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.php" onclick="redirectTo('about.php')">About</a>
-      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-        <div class="dropdown-content" id="searchDropdown">
-          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
-          <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-            <div class="dropdown-content" id="deleteDropdown">
-              <a href="deletebooks.php" onclick="redirectTo('deletebooks.php')">Delete Books</a>
-              <a href="deletejournals.php" onclick="redirectTo('deletejournals.php')">Delete Journals</a>
-              <a href="deleteimages.php" onclick="redirectTo('deleteimages.php')">Delete Images</a>
-              <a href="deletevideos.php" onclick="redirectTo('deletevideos.php')">Delete Videos</a>
-              <a href="deletedissertations.php" onclick="redirectTo('deletedissertations.php')">Delete Dissertations</a>
+  <nav>
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+        <a href="index.html">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php">Login</a>
+        <a href="logout.php">Logout</a>
+        <a href="register.php">Register</a>
+        <div class="dropdown">
+          <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+          <div class="dropdown-content" id="searchDropdown">
+            <a href="books.php">Books</a>
+            <a href="journals.php">Journals</a>
+            <a href="images.php">Images</a>
+            <a href="videos.php">Videos</a>
+            <a href="dissertations.php">Dissertations</a>
+            <div class="dropdown">
+              <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+              <div class="dropdown-content" id="ModifyDropdown">
+                <a href="modifybooks.php">Modify Books</a>
+                <a href="modifyjournals.php">Modify Journals</a>
+                <a href="modifyimages.php">Modify Images</a>
+                <a href="modifyvideos.php">Modify Videos</a>
+                <a href="modifydissertations.php">Modify Dissertations</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
       <a href="index.html">
@@ -104,9 +107,15 @@ if(isset($_POST['submit'])){
       <a href="email.php"><img src="images/email.png" alt="email icon" width="100" height="80"></a>
       </nav>
   </div>
-    <div class="container">
-        <p>Thank you! Your contact request has been submitted successfully. We will get back to you soon.</p>
-        <button type="submit" onclick="window.location.href='./contact.php'"><strong>Contact Page</strong></button>
-    </div>
+  <div class="container">
+    <p>Thank you! Your contact request has been submitted successfully. We will get back to you soon.</p>
+    <form action="contact.php" method="get">
+        <button type="submit"><strong>Contact</strong></button>
+    </form>
+</div>
+<footer>
+    &copy; 2024 Ottawa Academic University. All Rights Reserved.
+</footer>
 </body>
 </html>
+

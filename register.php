@@ -51,33 +51,34 @@ function post_value($field)
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
 <div class="nav">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.php" onclick="redirectTo('about.php')">About</a>
-      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-        <div class="dropdown-content" id="searchDropdown">
-          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
-          <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
-            <div class="dropdown-content" id="ModifyDropdown">
-              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
-              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
-              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
-              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
-              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+  <nav>
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+        <a href="index.html">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php">Login</a>
+        <a href="logout.php">Logout</a>
+        <a href="register.php">Register</a>
+        <div class="dropdown">
+          <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+          <div class="dropdown-content" id="searchDropdown">
+            <a href="books.php">Books</a>
+            <a href="journals.php">Journals</a>
+            <a href="images.php">Images</a>
+            <a href="videos.php">Videos</a>
+            <a href="dissertations.php">Dissertations</a>
+            <div class="dropdown">
+              <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+              <div class="dropdown-content" id="ModifyDropdown">
+                <a href="modifybooks.php">Modify Books</a>
+                <a href="modifyjournals.php">Modify Journals</a>
+                <a href="modifyimages.php">Modify Images</a>
+                <a href="modifyvideos.php">Modify Videos</a>
+                <a href="modifydissertations.php">Modify Dissertations</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
       <a href="register.php">
@@ -93,7 +94,7 @@ function post_value($field)
     <!-- https://www.w3schools.com/php/php_forms.asp-->
     <!--https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/-->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-<label for="username"><strong>username</strong></label>
+<label for="username"><strong>Username</strong></label>
 <input type="text" id="username" name="username" placeholder="Username">
 <span class="error"><?php echo $usernameErr; ?></span><br><br>
 
@@ -102,22 +103,22 @@ function post_value($field)
 <span class="error"><?php echo $passwordErr; ?></span><br><br>
 <button type="submit" onclick="window.location.href='./login.php'"><strong>Register</strong></button>
 
-<div>
+<div class="checkbox">
     <label for="agree">
         <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
         with the terms of service. Already a member?<br> <button type="submit" onclick="window.location.href='./login.php'"><strong>Login</strong></button>
 <br>
-    </label>
+</label>
 </div>
         <!--https://www.phptutorial.net/php-tutorial/php-registration-form/-->
-    </form>
+</form>
         <?php
         // Display error message if login fails
         if (isset($error_msg)) {
             echo '<p class="msg error">' . $error_msg . '</p>';
         }
         ?>
-      <footer>
+<footer>
     &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
 </body>

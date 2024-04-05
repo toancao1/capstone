@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstnameErr = "First name is required";
     } else {
         $firstName = test_input($_POST["firstname"]);
-        // Check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) {
             $firstnameErr = "Only letters and white space allowed";
         }
@@ -48,12 +47,7 @@ if (empty($_POST["subject"])) {
   $subject = test_input($_POST["subject"]);
 }
 
-
-    // No errors, proceed with form submission
     if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($subjectErr)) {
-        // Process your form submission here
-        // You can redirect to thank_you.php or handle the submission in this block
-        // For simplicity, let's redirect to thank_you.php
         header("Location: thank_you.php");
     }
 }
@@ -65,6 +59,7 @@ function test_input($data) {
   return $data;
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,33 +77,34 @@ function test_input($data) {
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
 <div class="nav">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.php" onclick="redirectTo('about.php')">About</a>
-      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-        <div class="dropdown-content" id="searchDropdown">
-          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
-          <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
-            <div class="dropdown-content" id="ModifyDropdown">
-              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
-              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
-              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
-              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
-              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+  <nav>
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+        <a href="index.html">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php">Login</a>
+        <a href="logout.php">Logout</a>
+        <a href="register.php">Register</a>
+        <div class="dropdown">
+          <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+          <div class="dropdown-content" id="searchDropdown">
+            <a href="books.php">Books</a>
+            <a href="journals.php">Journals</a>
+            <a href="images.php">Images</a>
+            <a href="videos.php">Videos</a>
+            <a href="dissertations.php">Dissertations</a>
+            <div class="dropdown">
+              <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+              <div class="dropdown-content" id="ModifyDropdown">
+                <a href="modifybooks.php">Modify Books</a>
+                <a href="modifyjournals.php">Modify Journals</a>
+                <a href="modifyimages.php">Modify Images</a>
+                <a href="modifyvideos.php">Modify Videos</a>
+                <a href="modifydissertations.php">Modify Dissertations</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
       <a href="contact.php">
@@ -125,22 +121,21 @@ function test_input($data) {
     <!-- https://www.w3schools.com/php/php_forms.asp-->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="First Name">
+    <input type="text" id="fname" name="firstname" placeholder="First Name" required>
     <span class="error"><?php echo $firstnameErr; ?></span><br><br>
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Last Name">
+    <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
     <span class="error"><?php echo $lastnameErr; ?></span><br><br>
 
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Email">
+    <input type="email" id="email" name="email" placeholder="Email" required>
     <span class="error"><?php echo $emailErr; ?></span><br><br>
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write your message here..."></textarea><br><br>
+    <textarea id="subject" name="subject" placeholder="Write your message here..." required></textarea><br><br>
     <span class="error"><?php echo $subjectErr; ?></span><br><br>
-
-    <button type="submit" onclick="window.location.href='./thankyou.php'"><strong>Submit</strong></button>
+    <button type="submit"><strong>Submit</strong></button>
 </form>
 </div>
 <footer>

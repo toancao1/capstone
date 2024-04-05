@@ -1,6 +1,23 @@
 <?php
 session_start();
-$emailErr = $passwordErr = "";
+
+// Redirect if user is already logged in
+if (isset($_SESSION['logged_user_id'])) {
+    header('Location: index.html');
+    exit;
+}
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] === "POST") :
+    require_once __DIR__ . "/database.php";
+    require_once __DIR__ . "/on_login.php";
+
+    // Check if necessary fields are set
+    if (isset($conn) && isset($_POST["username"]) && isset($_POST["password"])) {
+      $result = on_login($conn, $_POST["username"], $_POST["password"]);
+    }
+endif;
+$usernameErr = $passwordErr = "";
 // Adapted from: https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/ 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
@@ -12,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: logged_in.php");
         exit;
     } else {
-        $error_msg = "Invalid email or password. Please try again.";
+        $error_msg = "Invalid username or password. Please try again.";
     }
 }
 ?>
@@ -32,34 +49,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h1>Login Page</h1>
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
+<div class="header">
+    <h1>Journals Page</h1>
+    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
+</div>
 <div class="nav">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.php" onclick="redirectTo('about.php')">About</a>
-      <a href="contact.php" onclick="redirectTo('contact.php')">Contact</a>
-      <a href="login.php" onclick="redirectTo('login.php')">Login</a>
-      <a href="logout.php" onclick="redirectTo('logout.php')">Logout</a>
-      <a href="register.php" onclick="redirectTo('register.php')">Register</a>
-      <div class="dropdown">
-        <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
-        <div class="dropdown-content" id="searchDropdown">
-          <a href="books.php" onclick="redirectTo('books.php')">Books</a>
-          <a href="journals.php" onclick="redirectTo('journals.php')">Journals</a>
-          <a href="images.php" onclick="redirectTo('images.php')">Images</a>
-          <a href="videos.php" onclick="redirectTo('videos.php')">Videos</a>
-          <a href="dissertations.php" onclick="redirectTo('dissertations.php')">Dissertations</a>
-          <div class="dropdown">
-            <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
-            <div class="dropdown-content" id="ModifyDropdown">
-              <a href="modifybooks.php" onclick="redirectTo('modifybooks.php')">Modify Books</a>
-              <a href="modifyjournals.php" onclick="redirectTo('modifyjournals.php')">Modify Journals</a>
-              <a href="modifyimages.php" onclick="redirectTo('modifyimages.php')">Modify Images</a>
-              <a href="modifyvideos.php" onclick="redirectTo('modifyvideos.php')">Modify Videos</a>
-              <a href="modifydissertations.php" onclick="redirectTo('modifydissertations.php')">Modify Dissertations</a>
+  <nav>
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+        <a href="index.html">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="login.php">Login</a>
+        <a href="logout.php">Logout</a>
+        <a href="register.php">Register</a>
+        <div class="dropdown">
+          <span class="dropbtn" onclick="toggleDropdown('searchDropdown')">Catalog</span>
+          <div class="dropdown-content" id="searchDropdown">
+            <a href="books.php">Books</a>
+            <a href="journals.php">Journals</a>
+            <a href="images.php">Images</a>
+            <a href="videos.php">Videos</a>
+            <a href="dissertations.php">Dissertations</a>
+            <div class="dropdown">
+              <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+              <div class="dropdown-content" id="ModifyDropdown">
+                <a href="modifybooks.php">Modify Books</a>
+                <a href="modifyjournals.php">Modify Journals</a>
+                <a href="modifyimages.php">Modify Images</a>
+                <a href="modifyvideos.php">Modify Videos</a>
+                <a href="modifydissertations.php">Modify Dissertations</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <input type="text" id="searchInput" placeholder="Search...">
       <ul id="searchResults"></ul>
       <a href="index.html">
@@ -77,9 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- https://www.w3schools.com/php/php_forms.asp-->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-    <label for="email"><strong>Email</strong></label>
-    <input type="email" id="email" name="email" placeholder="Email">
-    <span class="error"><?php echo $emailErr; ?></span><br><br>
+
+<label for="username"><strong>Username</strong></label>
+<input type="username" id="username" name="username" placeholder="Username">
+<span class="error"><?php echo $usernameErr; ?></span><br><br>
 
     <label for="password"><strong>Password</strong></label>
 <input type="password" id="password" name="password" placeholder="Password">
