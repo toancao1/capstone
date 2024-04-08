@@ -41,6 +41,16 @@
             </div>
           </div>
         </div>
+        <form method="post">
+      <select name="keywords">
+        <option value="">All Keywords</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="creator">Creator</option>
+        <option value="publication_date">Publication Date</option>
+        <option value="subject">Subject</option>
+      </select>
+    </form>
       <input type="text" id="searchInput" placeholder="Search...">
         <ul id="searchResults"></ul>
         <a href="books.php">
@@ -62,8 +72,6 @@
     <input type="text" id="keywords" name="keywords"> 
     <label for="description">Description:</label>
     <input type="text" id="description" name="description">
-    <label for="type">Type:</label>
-    <input type="text" id="type" name="type">
     <label for="contributors">Contributors:</label>
     <input type="text" id="contributors" name="contributors">
     <label for="source">Source:</label>
@@ -100,7 +108,6 @@
     $date = $_POST["date"];
     $keywords = $_POST["keywords"];
     $description = $_POST["description"];
-    $type = $_POST["type"];
     $contributors = $_POST["contributors"];
     $source = $_POST["source"];
     $language = $_POST["language"];

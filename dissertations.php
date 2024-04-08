@@ -41,6 +41,16 @@
             </div>
           </div>
         </div>
+        <form method="post">
+      <select name="keywords">
+        <option value="">All Keywords</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="creator">Creator</option>
+        <option value="publication_date">Publication Date</option>
+        <option value="subject">Subject</option>
+      </select>
+    </form>
       <input type="text" id="searchInput" placeholder="Search...">
         <ul id="searchResults"></ul>
           <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>-->       

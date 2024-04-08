@@ -1,9 +1,6 @@
 <?php
 function on_login($conn, $username, $password)
 {
-    // Your existing code for validating username and password
-
-    // Fetch the user's role from the database
     $sql_role = "SELECT role FROM library_members WHERE username = ?";
     $stmt_role = mysqli_prepare($conn, $sql_role);
     mysqli_stmt_bind_param($stmt_role, "s", $username);

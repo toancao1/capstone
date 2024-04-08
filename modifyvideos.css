@@ -42,6 +42,7 @@ form input[type=text] {
   padding-left: 40px; 
   padding: 5px;
 }
+
 /*https://www.color-hex.com/color/d3d3d3*/
 form button {
   grid-column: 2 / 3;
@@ -95,25 +96,6 @@ form button:hover {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.icon-bar {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: #333;
-}
-
-.icon-bar a {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  color: white;
-}
-
-.icon-bar a:hover {
-  background-color: #ddd;
-  color: black;
 }
 
 /*https://www.w3schools.com/css/tryit.asp?filename=trycss_forms*/
