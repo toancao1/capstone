@@ -1,19 +1,32 @@
 <?php
 function on_login($conn, $username, $password)
 {
-    $username = trim($username);
-    $password = trim($password);
+    // Your existing code for validating username and password
 
-    // Check if username and password are provided
-    if (empty($username) || empty($password)) {
+    // Fetch the user's role from the database
+    $sql_role = "SELECT role FROM library_members WHERE username = ?";
+    $stmt_role = mysqli_prepare($conn, $sql_role);
+    mysqli_stmt_bind_param($stmt_role, "s", $username);
+    mysqli_stmt_execute($stmt_role);
+    $result_role = mysqli_stmt_get_result($stmt_role);
+
+    if (!$result_role || mysqli_num_rows($result_role) === 0) {
         return [
             "ok" => 0,
-            "msg" => "Username and password are required fields."
+            "msg" => "Invalid username or password."
         ];
     }
 
+    $role_row = mysqli_fetch_assoc($result_role);
+    $role = $role_row['role'];
+
+    return [
+        "ok" => 1,
+        "role" => $role
+    ];
+
     // Query to find the user by username
-    $sql = "SELECT * FROM librarians WHERE username = ?";
+    $sql = "SELECT * FROM library_members WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);

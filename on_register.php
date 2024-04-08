@@ -12,11 +12,10 @@ function on_register($conn) {
         return ["ok" => 0, "msg" => "All fields are required.", "form_reset" => true];
     } else {
         // Hash password
-        $password = "user_password";
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT); 
+
         // Prepare and execute the query to insert user into database
-        $sql = "INSERT INTO librarians (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO library_members (username, password) VALUES (?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
 
         if (!$stmt) {
@@ -39,3 +38,5 @@ function on_register($conn) {
     }
 }
 ?>
+
+

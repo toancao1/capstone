@@ -37,11 +37,12 @@ form label {
 /*https://stackoverflow.com/questions/39071349/html-form-input-background-image*/
 form input[type=text] {
   background-size: 20px; 
-  background-position: 10px center; 
+  background-position: 10px left; 
   background-repeat: no-repeat; 
   padding-left: 40px; 
   padding: 5px;
 }
+
 /*https://www.color-hex.com/color/d3d3d3*/
 form button {
   grid-column: 2 / 3;
@@ -50,7 +51,7 @@ form button {
   color: black; 
   border: none;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
 }
 
 form button:hover {
@@ -147,16 +148,4 @@ form button:hover {
 
 button[type="submit"] {
   margin-top: 20px; 
-}
-
-
-.checkbox {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  flex-direction: column;
-}
-
-.checkbox label {
-  margin-bottom: 20px; 
 }

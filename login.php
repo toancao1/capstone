@@ -9,14 +9,17 @@ if (isset($_SESSION['logged_user_id'])) {
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") :
-    require_once __DIR__ . "/database.php";
-    require_once __DIR__ . "/on_login.php";
+  require_once __DIR__ . "/database.php";
+  require_once __DIR__ . "/on_login.php";
 
-    // Check if necessary fields are set
-    if (isset($conn) && isset($_POST["username"]) && isset($_POST["password"])) {
-      $result = on_login($conn, $_POST["username"], $_POST["password"]);
-    }
+  // Check if necessary fields are set
+  if (isset($conn) && isset($_POST["username"]) && isset($_POST["password"])) {
+      $role = $_POST["role"];
+      // Perform login based on role
+      $result = on_login($conn, $_POST["username"], $_POST["password"], $role);
+  }
 endif;
+
 $usernameErr = $passwordErr = "";
 // Adapted from: https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/ 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -47,10 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 <div class="header">
     <h1>Login Page</h1>
-    <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
-</div>
-<div class="header">
-    <h1>Journals Page</h1>
     <img src="images/Ottawa Academic University's Library Management System Logo.png" alt="logo" width="400" height="100">
 </div>
 <div class="nav">
@@ -107,7 +106,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label for="password"><strong>Password</strong></label>
 <input type="password" id="password" name="password" placeholder="Password">
 <span class="error"><?php echo $passwordErr; ?></span><br><br>
-
+<label for="role"><strong>Select Role:</strong></label><br>
+<select id="role" name="role">
+<option value="select">Select</option>
+    <option value="student">Student</option>
+    <option value="librarian">Librarian</option>
+</select><br><br>
     <button type="submit" onclick="window.location.href='./loggedin.php'"><strong>Submit</strong></button>
 </form>
 </div>

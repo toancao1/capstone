@@ -87,37 +87,45 @@ function post_value($field)
     </a>
          <!-- Source of image: <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>-->
          <a href="index.html"><img src="images/Home.png" alt="home icon" width="100" height="80"></a>
-    </nav>
+         </nav>
+         </nav>
 </div>
     </nav>
-  </div class="container">
+    <div class="container">
     <!-- https://www.w3schools.com/php/php_forms.asp-->
-    <!--https://www.devbabu.com/how-to-make-php-mysql-login-registration-system/-->
+<?php
+if (isset($_SESSION['logged_user_id'])) {
+    echo '<p>Already a member? <a href="login.php">Log in</a></p>';
+} else {
+}
+    // Display error message if registration fails
+    if (isset($error_msg)) {
+        echo '<p class="msg error">' . $error_msg . '</p>';
+    }
+?>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+
 <label for="username"><strong>Username</strong></label>
-<input type="text" id="username" name="username" placeholder="Username">
+<input type="username" id="username" name="username" placeholder="Username">
 <span class="error"><?php echo $usernameErr; ?></span><br><br>
 
-<label for="password"><strong>Password</strong></label>
+    <label for="password"><strong>Password</strong></label>
 <input type="password" id="password" name="password" placeholder="Password">
 <span class="error"><?php echo $passwordErr; ?></span><br><br>
-<button type="submit" onclick="window.location.href='./login.php'"><strong>Register</strong></button>
-
-<div class="checkbox">
-    <label for="agree">
-        <input type="checkbox" name="agree" id="agree" value="yes"/> I agree
-        with the terms of service. Already a member?<br> <button type="submit" onclick="window.location.href='./login.php'"><strong>Login</strong></button>
+<label for="role"><strong>Select Role:</strong></label><br>
+<select id="role" name="role">
+<option value="select">Select</option>
+    <option value="student">Student</option>
+    <option value="librarian">Librarian</option>
+</select><br><br>
+    <button type="submit" onclick="window.location.href='./login.php'"><strong>Register</strong></button>
+    <p>Already a member?</p>
+        <br><br><button type="submit" onclick="window.location.href='./login.php'"><strong>Login</strong></button>
 <br>
-</label>
+</form>
 </div>
         <!--https://www.phptutorial.net/php-tutorial/php-registration-form/-->
-</form>
-        <?php
-        // Display error message if login fails
-        if (isset($error_msg)) {
-            echo '<p class="msg error">' . $error_msg . '</p>';
-        }
-        ?>
 <footer>
     &copy; 2024 Ottawa Academic University. All Rights Reserved.
 </footer>
