@@ -144,8 +144,8 @@ mysqli_close($conn);
 ?>
 
 
-<form action="modifydissertationscopy.php" method="get">
-<button type="submit" onclick="window.location.href='./modifydissertationscopy.php'">Modify DIssertations Page</button>
+<form action="modifydissertations.php" method="get">
+<button type="submit" onclick="window.location.href='./modifydissertations.php'">Modify DIssertations Page</button>
 </form>
 <footer>
   &copy; 2024 Ottawa Academic University. All Rights Reserved.
