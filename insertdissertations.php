@@ -14,7 +14,7 @@
 </div>
 <div class="nav">
   <nav>
-    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp and https://www.w3schools.com/php/func_mysqli_prepare.asp-->
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp and https://www.w3schools.com/php/func_mysqli_prepare.asp and https://stackoverflow.com/questions/67252495/on-which-line-to-check-if-data-fetching-successful-or-not-when-using-mysqli-stmt-->
         <a href="index.html">Home</a>
         <a href="about.php">About</a>
         <a href="contact.php">Contact</a>
