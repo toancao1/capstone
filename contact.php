@@ -1,33 +1,34 @@
 <?php
 // https://w3schools.invisionzone.com/topic/57515-need-help-getting-form-data-to-insert-in-table-with-php/
+// https://stackoverflow.com/questions/50652300/php-validate-on-same-page-and-then-process-through-different-php
 // https://slideplayer.com/slide/8793672/ 
 // https://stackoverflow.com/questions/25981194/what-is-the-purpose-of-setting-variables-to-empty-after-defining-them
-// Define variables and set to empty values
 // https://www.freecodecamp.org/news/creating-html-forms/
+// Define variables and set to empty values
 $firstnameErr = $lastnameErr = $emailErr = $subjectErr = "";
 $firstName = $lastName = $subject = $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate First Name
-    if (empty($_POST["firstname"])) {
-        $firstnameErr = "First name is required";
-    } else {
-        $firstName = test_input($_POST["firstname"]);
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $firstName)) {
-            $firstnameErr = "Only letters and white space allowed";
-        }
-    }
+// Validate First Name
+if (empty($_POST["firstname"])) {
+  $firstnameErr = "First name is required";
+} else {
+  $firstName = test_input($_POST["firstname"]);
+  if (!preg_match("/^[a-zA-Z-']*$/", $firstName)) {
+    $firstnameErr = "Only letters and white space allowed";
+  }
+}
 
-    // Validate Last Name
-    if (empty($_POST["lastname"])) {
-        $lastnameErr = "Last name is required";
-    } else {
-        $lastName = test_input($_POST["lastname"]);
-        // Check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $lastName)) {
-            $lastnameErr = "Only letters and white space allowed";
-        }
-    }
+// Validate Last Name
+if (empty($_POST["lastname"])) {
+  $lastnameErr = "Last name is required";
+} else {
+  $lastName = test_input($_POST["lastname"]);
+  // Check if name only contains letters and whitespace
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $lastName)) {
+    $lastnameErr = "Only letters and white space allowed";
+  }
+}
 
 // Validate Email
 if (empty($_POST["email"])) {
@@ -47,9 +48,9 @@ if (empty($_POST["subject"])) {
   $subject = test_input($_POST["subject"]);
 }
 
-    if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($subjectErr)) {
-        header("Location: thank_you.php");
-    }
+if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) && empty($subjectErr)) {
+  header("Location: thank_you.php");
+}
 }
 
 function test_input($data) {
@@ -158,3 +159,4 @@ function test_input($data) {
 </footer>
 </body>
 </html>
+
