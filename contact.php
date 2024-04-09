@@ -1,5 +1,6 @@
 <?php
 // https://w3schools.invisionzone.com/topic/57515-need-help-getting-form-data-to-insert-in-table-with-php/
+// https://www.w3schools.com/howto/howto_css_contact_form.asp
 // https://stackoverflow.com/questions/50652300/php-validate-on-same-page-and-then-process-through-different-php
 // https://slideplayer.com/slide/8793672/ 
 // https://stackoverflow.com/questions/25981194/what-is-the-purpose-of-setting-variables-to-empty-after-defining-them
