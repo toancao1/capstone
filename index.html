@@ -62,31 +62,30 @@
     </nav>
 </div>
 <p>Welcome to our university library website LMS (Library Management System)!</p>
-<form method ="post">
+<form method="post">
   <label>Search our catalog using some fields:</label>
   <br>
-  <label>Title</label>
-  <br>
-  <input type="text" name="string">
-  <br>
-  <label>Author</label>
-  <br>
-  <input type="text" name="string">
-  <br>
-  <label>Creator</label>
-  <br>
-  <input type="text" name="string">
-  <br>
-  <label>Publication Date</label>
-  <br>
-  <input type="text" name="string">
-  <br>
-  <label>Subject</label>
-  <br>
-  <input type="text" name="string">
-  <br>
-  <input type="submit" name="submit">
-  </form>
+    <label>Resource Type:</label><br>
+    <select name="type" id="type">
+      <option value="" selected="selected">Select</option>
+      <option value="" selected="selected">Books</option>
+      <option value="" selected="selected">Journals</option>
+      <option value="" selected="selected">Images</option>
+      <option value="" selected="selected">Videos</option>
+      <option value="" selected="selected">Dissertations</option>
+    </select>
+    <br><br><label>Title</label><br>
+    <input type="text" name="string">
+    <br><br><label>Author</label><br>
+    <input type="text" name="string">
+    <br><br><label>Creator</label><br>
+    <input type="text" name="string">
+    <br><br><label>Publication Date</label><br>
+    <input type="text" name="string"><br><br>
+    <label>Subject</label><br>
+    <input type="text" name="string"><br><br>
+    <input type="submit" name="submit">
+    </form>
   <!-- Source of image: https://pixabay.com/photos/library-books-bookcases-bookshelves-488690/-->
   <img src="images/Library.jpg" alt="library books" width="800" height="500">
 <footer>
