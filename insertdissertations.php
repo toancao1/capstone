@@ -138,12 +138,9 @@ if ($stmt === false) {
     // Close statement
     mysqli_stmt_close($stmt);
 }
-
 // Close connection
 mysqli_close($conn);
 ?>
-
-
 <form action="modifydissertations.php" method="get">
 <button type="submit" onclick="window.location.href='./modifydissertations.php'">Modify DIssertations Page</button>
 </form>
