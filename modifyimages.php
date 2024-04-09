@@ -63,6 +63,16 @@ if(isset($_POST['del'])) {
             </div>
           </div>
         </div>
+        <form method="post">
+          <select name="fields">
+            <option value="">All Fields</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="creator">Creator</option>
+            <option value="publication_date">Publication Date</option>
+            <option value="subject">Subject</option>
+          </select>
+        </form>
         <input type="text" id="searchInput" placeholder="Search...">
         <ul id="searchResults"></ul>
         <a href="index.html">

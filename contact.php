@@ -106,8 +106,8 @@ function test_input($data) {
           </div>
         </div>
         <form method="post">
-      <select name="keywords">
-        <option value="">All Keywords</option>
+      <select name="fields">
+        <option value="">All Fields</option>
         <option value="title">Title</option>
         <option value="author">Author</option>
         <option value="creator">Creator</option>
