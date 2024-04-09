@@ -14,7 +14,7 @@
 </div>
 <div class="nav">
   <nav>
-    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+    <!--https://www.w3schools.com/howto/howto_js_dropdown.asp and https://www.w3schools.com/php/func_mysqli_prepare.asp-->
         <a href="index.html">Home</a>
         <a href="about.php">About</a>
         <a href="contact.php">Contact</a>
