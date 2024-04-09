@@ -22,10 +22,8 @@ function on_register($conn) {
             return ["ok" => 0, "msg" => "Database error: " . mysqli_error($conn), "form_reset" => false];
         }
 
-        // Bind parameters
         mysqli_stmt_bind_param($stmt, "ss", $username, $hashed_password);
 
-        // Execute the statement
         $success = mysqli_stmt_execute($stmt);
 
         if ($success) {

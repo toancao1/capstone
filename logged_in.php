@@ -61,27 +61,29 @@ if (isset($_GET['logout'])) {
                 <a href="videos.php">Videos</a>
                 <a href="dissertations.php">Dissertations</a>
                 <div class="dropdown">
-                    <span class="dropbtn" onclick="toggleDropdown('deleteDropdown')">Delete Catalog</span>
-                    <div class="dropdown-content" id="deleteDropdown">
-                        <a href="deletebooks.php">Delete Books</a>
-                        <a href="deletejournals.php">Delete Journals</a>
-                        <a href="deleteimages.php">Delete Images</a>
-                        <a href="deletevideos.php">Delete Videos</a>
-                        <a href="deletedissertations.php">Delete Dissertations</a>
-                    </div>
-                </div>
+              <span class="dropbtn" onclick="toggleDropdown('ModifyDropdown')">Modify Catalog</span>
+              <div class="dropdown-content" id="ModifyDropdown">
+                <a href="modifybooks.php">Modify Books</a>
+                <a href="modifyjournals.php">Modify Journals</a>
+                <a href="modifyimages.php">Modify Images</a>
+                <a href="modifyvideos.php">Modify Videos</a>
+                <a href="modifydissertations.php">Modify Dissertations</a>
+              </div>
             </div>
+          </div>
         </div>
-        <form method="post">
-          <select name="fields">
-            <option value="">All Fields</option>
-            <option value="title">Title</option>
-            <option value="author">Author</option>
-            <option value="creator">Creator</option>
-            <option value="publication_date">Publication Date</option>
-            <option value="subject">Subject</option>
-          </select>
-        </form>
+         <!--w3schools.com-->
+    <!--https://www.w3schools.com/howto/howto_js_filter_lists.asp-->
+    <form method="post">
+      <select name="fields">
+        <option value="">All Fields</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="creator">Creator</option>
+        <option value="publication_date">Publication Date</option>
+        <option value="subject">Subject</option>
+      </select>
+    </form>
         <input type="text" id="searchInput" placeholder="Search...">
         <ul id="searchResults"></ul>
         <!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Catalin Fertu - Flaticon</a>        <img src="images/open-book.png" alt="books icon"width="100" height="80">-->

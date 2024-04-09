@@ -106,7 +106,8 @@ function post_value($field)
 <?php
 if (isset($_SESSION['logged_user_id'])) {
     echo '<p>Already a member? <a href="login.php">Log in</a></p>';
-} else {
+} 
+else {
 }
     // Display error message if registration fails
     if (isset($error_msg)) {
@@ -114,12 +115,9 @@ if (isset($_SESSION['logged_user_id'])) {
     }
 ?>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
-
 <label for="username"><strong>Username</strong></label>
 <input type="username" id="username" name="username" placeholder="Username">
 <span class="error"><?php echo $usernameErr; ?></span><br><br>
-
     <label for="password"><strong>Password</strong></label>
 <input type="password" id="password" name="password" placeholder="Password">
 <span class="error"><?php echo $passwordErr; ?></span><br><br>

@@ -70,6 +70,7 @@ if ($conn === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+// https://www.w3schools.com/php/php_superglobals_request.asp
 $title = $_REQUEST['title'];
 $creators = isset($_REQUEST['creators']) ? $_REQUEST['creators'] : '';
 $identifier = $_REQUEST['identifier'];
@@ -138,9 +139,11 @@ if ($stmt === false) {
     // Close statement
     mysqli_stmt_close($stmt);
 }
+
 // Close connection
 mysqli_close($conn);
 ?>
+
 <form action="modifydissertations.php" method="get">
 <button type="submit" onclick="window.location.href='./modifydissertations.php'">Modify DIssertations Page</button>
 </form>
